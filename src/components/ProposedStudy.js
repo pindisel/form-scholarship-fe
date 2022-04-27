@@ -1,0 +1,86 @@
+import React from "react";
+import {
+  FormControlLabel,
+  RadioGroup,
+  Select,
+  MenuItem,
+  Typography,
+  Grid,
+  FormLabel,
+  Radio,
+} from "@mui/material";
+
+const courses = [
+  {
+    value: "Education",
+    label: "MA in Education at the Faculty of Education",
+  },
+  {
+    value: "Economics",
+    label: "MA in Economics at the Faculty of Economics and Business",
+  },
+  {
+    value: "PoliticalScience",
+    label: "MA in Political Science at the Faculty of Social Sciences",
+  },
+  {
+    value: "IslamicStudies",
+    label: "MA in Islamic Studies at the Faculty of Islamic Studies",
+  },
+];
+
+const ProposedStudy = ({ onChange, value }) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    onChange((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  return (
+    <>
+      <Typography>D. Proposed Study</Typography>
+      <Grid container spacing={2}>
+        <Grid item xs={3}>
+          <FormLabel required>Level of Study</FormLabel>
+        </Grid>
+        <Grid item xs={9}>
+          <RadioGroup row name="studyLevel" onChange={handleChange}>
+            <FormControlLabel
+              value="Master"
+              control={<Radio required />}
+              label="Master"
+            />
+            <FormControlLabel
+              value="PhD"
+              control={<Radio required />}
+              label="PhD"
+            />
+          </RadioGroup>
+        </Grid>
+      </Grid>
+      <Grid container spacing={2}>
+        <Grid item xs={3}>
+          <FormLabel required>Course Title</FormLabel>
+        </Grid>
+        <Grid item xs={9}>
+          <Select
+            fullWidth
+            onChange={handleChange}
+            name="courseTitle"
+            value={value.study || ""}
+          >
+            {courses.map((option) => (
+              <MenuItem value={option.value} key={option.value}>
+                <Typography variant="subtitle1">{option.label}</Typography>
+              </MenuItem>
+            ))}
+          </Select>
+        </Grid>
+      </Grid>
+    </>
+  );
+};
+
+export default ProposedStudy;
