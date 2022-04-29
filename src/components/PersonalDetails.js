@@ -28,27 +28,27 @@ const PersonalDetails = ({ onChange }) => {
         <Grid item xs={9}>
           <RadioGroup row onChange={handleChange} name="title">
             <FormControlLabel
-              value="Mr"
+              value="mr"
               control={<Radio required />}
               label="Mr"
             />
             <FormControlLabel
-              value="Ms"
+              value="ms"
               control={<Radio required />}
               label="Ms"
             />
             <FormControlLabel
-              value="Mrs"
+              value="mrs"
               control={<Radio required />}
               label="Mrs"
             />
             <FormControlLabel
-              value="Miss"
+              value="miss"
               control={<Radio required />}
               label="Miss"
             />
             <FormControlLabel
-              value="Other"
+              value="other"
               control={<Radio required />}
               label="Other"
             />
@@ -60,12 +60,7 @@ const PersonalDetails = ({ onChange }) => {
           <FormLabel required>Family Name</FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <TextField
-            fullWidth
-            name="famName"
-            onChange={handleChange}
-            required
-          />
+          <TextField fullWidth name="f_name" onChange={handleChange} required />
         </Grid>
       </Grid>
       <Grid container spacing={2}>
@@ -73,12 +68,7 @@ const PersonalDetails = ({ onChange }) => {
           <FormLabel required>Given Name</FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <TextField
-            fullWidth
-            name="giveName"
-            onChange={handleChange}
-            required
-          />
+          <TextField fullWidth name="l_name" onChange={handleChange} required />
         </Grid>
       </Grid>
       <Grid container spacing={2}>
@@ -89,7 +79,12 @@ const PersonalDetails = ({ onChange }) => {
           </FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <TextField fullWidth name="placeBirth" />
+          <TextField
+            fullWidth
+            name="birth_place"
+            onChange={handleChange}
+            required
+          />
         </Grid>
       </Grid>
       <Grid container spacing={2}>
@@ -99,7 +94,7 @@ const PersonalDetails = ({ onChange }) => {
         <Grid item xs={9}>
           <TextField
             fullWidth
-            name="dateBirth"
+            name="birth_date"
             type="date"
             onChange={handleChange}
             required
@@ -113,12 +108,12 @@ const PersonalDetails = ({ onChange }) => {
         <Grid item xs={9}>
           <RadioGroup row name="gender" onChange={handleChange}>
             <FormControlLabel
-              value="Male"
+              value="male"
               control={<Radio required />}
               label="Male"
             />
             <FormControlLabel
-              value="Female"
+              value="female"
               control={<Radio required />}
               label="Female"
             />
@@ -145,7 +140,7 @@ const PersonalDetails = ({ onChange }) => {
         <Grid item xs={9}>
           <TextField
             fullWidth
-            name="nationalNumber"
+            name="national_num"
             onChange={handleChange}
             type="number"
             required
@@ -161,7 +156,7 @@ const PersonalDetails = ({ onChange }) => {
             <Grid item xs={6}>
               <TextField
                 fullWidth
-                name="nationalNumber"
+                name="passport_num"
                 onChange={handleChange}
                 type="number"
                 required
@@ -175,7 +170,7 @@ const PersonalDetails = ({ onChange }) => {
                 <Grid item xs={6}>
                   <TextField
                     fullWidth
-                    name="issueDate"
+                    name="issue_date"
                     onChange={handleChange}
                     type="date"
                     required
@@ -187,7 +182,7 @@ const PersonalDetails = ({ onChange }) => {
                 <Grid item xs={6}>
                   <TextField
                     fullWidth
-                    name="expiryDate"
+                    name="expiry_date"
                     onChange={handleChange}
                     type="date"
                     required

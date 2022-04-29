@@ -6,11 +6,15 @@ import {
   ProposedStudy,
   EducationalBackground,
 } from "../components";
+import { PersonalService } from "../services/personal.service";
 
 const StudentRegist = () => {
-  const onSubmit = (e) => {
-    e.preventDefault();
-    console.log("submit");
+  const onSubmit = async () => {
+    try {
+      await PersonalService.createPersonal(personal);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   const [personal, setPersonal] = useState({});
   const [contact, setContact] = useState({});
@@ -21,15 +25,15 @@ const StudentRegist = () => {
   // console.log(contact);
   // console.log(financial);
   // console.log(study);
-  console.log(education);
+  // console.log(education);
   return (
     <>
       <form onSubmit={onSubmit}>
         <PersonalDetails onChange={setPersonal} value={personal} />
-        <ContactDetails onChange={setContact} value={contact} />
+        {/* <ContactDetails onChange={setContact} value={contact} />
         <FinancialSupport onChange={setFinancial} value={financial} />
         <ProposedStudy onChange={setStudy} value={study} />
-        <EducationalBackground onChange={setEducation} value={education} />
+        <EducationalBackground onChange={setEducation} value={education} /> */}
         <button type="submit">Submit</button>
       </form>
     </>
