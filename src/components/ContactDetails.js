@@ -11,11 +11,15 @@ const ContactDetails = ({ onChange }) => {
   };
   return (
     <>
-      <Typography>B. Contact Details</Typography>
-      <Typography>Residential Address</Typography>
+      <Typography variant="h5" gutterBottom>
+        B. Contact Details
+      </Typography>
+      <Typography variant="h6" gutterBottom>
+        Residential Address
+      </Typography>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <FormLabel>Address Line 1</FormLabel>
+          <FormLabel required>Address Line 1</FormLabel>
         </Grid>
         <Grid item xs={9}>
           <TextField
@@ -28,7 +32,7 @@ const ContactDetails = ({ onChange }) => {
       </Grid>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <FormLabel>Address Line 2</FormLabel>
+          <FormLabel required>Address Line 2</FormLabel>
         </Grid>
         <Grid item xs={9}>
           <TextField
@@ -41,19 +45,19 @@ const ContactDetails = ({ onChange }) => {
       </Grid>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <FormLabel>Town/City</FormLabel>
+          <FormLabel required>Town/City</FormLabel>
         </Grid>
         <Grid item xs={5}>
           <TextField fullWidth name="city" onChange={handleChange} required />
         </Grid>
         <Grid item xs={1}>
-          <FormLabel>Postal Code</FormLabel>
+          <FormLabel required>Postal Code</FormLabel>
         </Grid>
         <Grid item xs={3}>
           <TextField
             fullWidth
-            name="postalCode"
-            onChange={onChange}
+            name="postal_code"
+            onChange={handleChange}
             type="number"
             required
           />
@@ -61,7 +65,7 @@ const ContactDetails = ({ onChange }) => {
       </Grid>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <FormLabel>State/Province</FormLabel>
+          <FormLabel required>State/Province</FormLabel>
         </Grid>
         <Grid item xs={9}>
           <TextField
@@ -74,7 +78,7 @@ const ContactDetails = ({ onChange }) => {
       </Grid>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <FormLabel>Country</FormLabel>
+          <FormLabel required>Country</FormLabel>
         </Grid>
         <Grid item xs={9}>
           <TextField
@@ -85,56 +89,64 @@ const ContactDetails = ({ onChange }) => {
           />
         </Grid>
       </Grid>
-      <Typography>Phone</Typography>
+      <Typography variant="h6" gutterBottom>
+        Phone
+      </Typography>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <FormLabel>Home Phone Number</FormLabel>
+          <FormLabel required>Home Phone Number</FormLabel>
         </Grid>
         <Grid item xs={9}>
           <TextField
             fullWidth
-            name="phoneNum"
+            name="home_phone"
             onChange={handleChange}
+            type="number"
             required
           />
         </Grid>
       </Grid>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <FormLabel>Mobile Number</FormLabel>
+          <FormLabel required>Mobile Number</FormLabel>
         </Grid>
         <Grid item xs={9}>
           <TextField
             fullWidth
-            name="mobileNum"
+            name="mobile_phone"
             onChange={handleChange}
+            type="number"
             required
           />
         </Grid>
       </Grid>
-      <Typography>Email Address</Typography>
+      <Typography variant="h6" gutterBottom>
+        Email Address
+      </Typography>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <FormLabel>Primary Email</FormLabel>
+          <FormLabel required>Primary Email</FormLabel>
         </Grid>
         <Grid item xs={9}>
           <TextField
             fullWidth
-            name="emailPrim"
+            name="primary_email"
             onChange={handleChange}
+            type="email"
             required
           />
         </Grid>
       </Grid>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <FormLabel>Alternate Email</FormLabel>
+          <FormLabel required>Alternate Email</FormLabel>
         </Grid>
         <Grid item xs={9}>
           <TextField
             fullWidth
-            name="emailAlter"
+            name="alternate_email"
             onChange={handleChange}
+            type="email"
             required
           />
         </Grid>

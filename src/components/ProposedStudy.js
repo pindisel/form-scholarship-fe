@@ -12,19 +12,19 @@ import {
 
 const courses = [
   {
-    value: "Education",
+    value: "MA in Education at the Faculty of Education",
     label: "MA in Education at the Faculty of Education",
   },
   {
-    value: "Economics",
+    value: "MA in Economics at the Faculty of Economics and Business",
     label: "MA in Economics at the Faculty of Economics and Business",
   },
   {
-    value: "PoliticalScience",
+    value: "MA in Political Science at the Faculty of Social Sciences",
     label: "MA in Political Science at the Faculty of Social Sciences",
   },
   {
-    value: "IslamicStudies",
+    value: "MA in Islamic Studies at the Faculty of Islamic Studies",
     label: "MA in Islamic Studies at the Faculty of Islamic Studies",
   },
 ];
@@ -40,7 +40,9 @@ const ProposedStudy = ({ onChange, value }) => {
 
   return (
     <>
-      <Typography>D. Proposed Study</Typography>
+      <Typography variant="h5" gutterBottom>
+        D. Proposed Study
+      </Typography>
       <Grid container spacing={2}>
         <Grid item xs={3}>
           <FormLabel required>Level of Study</FormLabel>
@@ -48,12 +50,12 @@ const ProposedStudy = ({ onChange, value }) => {
         <Grid item xs={9}>
           <RadioGroup row name="studyLevel" onChange={handleChange}>
             <FormControlLabel
-              value="Master"
+              value="master"
               control={<Radio required />}
               label="Master"
             />
             <FormControlLabel
-              value="PhD"
+              value="phd"
               control={<Radio required />}
               label="PhD"
             />

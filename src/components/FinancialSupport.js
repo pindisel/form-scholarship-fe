@@ -18,8 +18,9 @@ const FinancialSupport = ({ onChange }) => {
   };
   return (
     <>
-      <Typography>C. Financial Support</Typography>
-      ????
+      <Typography variant="h5" gutterBottom>
+        C. Financial Support
+      </Typography>
       <Grid container spacing={2}>
         <Grid item xs={3}>
           <FormLabel required>Apply for Admission:</FormLabel>
@@ -27,17 +28,22 @@ const FinancialSupport = ({ onChange }) => {
         <Grid item xs={9}>
           <RadioGroup name="finance" onChange={handleChange}>
             <FormControlLabel
-              value="Master"
+              value="self"
+              control={<Radio required />}
+              label="Self Financing"
+            />
+            <FormControlLabel
+              value="master"
               control={<Radio required />}
               label="IIIU Admission for Master Program"
             />
             <FormControlLabel
-              value="LPDP"
+              value="lpdp"
               control={<Radio required />}
               label="LDPD - IIIU Admission for Doctor Program"
             />
             <FormControlLabel
-              value="Baznas"
+              value="baznas"
               control={<Radio required />}
               label="BAZNAS - IIIU Admission for Doctor Program"
             />

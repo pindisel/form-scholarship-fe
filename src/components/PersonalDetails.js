@@ -20,7 +20,9 @@ const PersonalDetails = ({ onChange }) => {
 
   return (
     <>
-      <Typography>A. Personal Details</Typography>
+      <Typography variant="h5" gutterBottom>
+        A. Personal Details
+      </Typography>
       <Grid container spacing={2}>
         <Grid item xs={3}>
           <FormLabel required>Title</FormLabel>

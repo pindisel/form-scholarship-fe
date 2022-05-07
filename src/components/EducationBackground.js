@@ -12,8 +12,12 @@ const EducationalBackground = ({ onChange }) => {
 
   return (
     <>
-      <Typography>E. Educational Background</Typography>
-      <Typography>Undergraduate Degree</Typography>
+      <Typography variant="h5" gutterBottom>
+        E. Educational Background
+      </Typography>
+      <Typography variant="h6" gutterBottom>
+        Undergraduate Degree
+      </Typography>
       <Grid container spacing={2}>
         <Grid item xs={3}>
           <FormLabel required>Name of Institution</FormLabel>
@@ -73,7 +77,9 @@ const EducationalBackground = ({ onChange }) => {
           />
         </Grid>
       </Grid>
-      <Typography>Master Degree</Typography>{" "}
+      <Typography variant="h6" gutterBottom>
+        Master Degree
+      </Typography>
       <Grid container spacing={2}>
         <Grid item xs={3}>
           <FormLabel required>Name of Institution</FormLabel>
