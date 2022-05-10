@@ -9,7 +9,7 @@ import {
   Radio,
 } from "@mui/material";
 
-const LanguageBackground = ({ onChange }) => {
+const LanguageBackground = ({ onChange, value }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     onChange((prevState) => ({
@@ -43,7 +43,12 @@ const LanguageBackground = ({ onChange }) => {
           <FormLabel required>English</FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <RadioGroup row onChange={handleChange} name="english_proficiency">
+          <RadioGroup
+            row
+            onChange={handleChange}
+            name="english_proficiency"
+            value={value.english_proficiency || ""}
+          >
             <FormControlLabel
               value="no proficiency"
               control={<Radio required />}
@@ -82,7 +87,12 @@ const LanguageBackground = ({ onChange }) => {
           <FormLabel required>Arabic</FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <RadioGroup row onChange={handleChange} name="arabic_proficiency">
+          <RadioGroup
+            row
+            onChange={handleChange}
+            name="arabic_proficiency"
+            value={value.arabic_proficiency || ""}
+          >
             <FormControlLabel
               value="no proficiency"
               control={<Radio required />}
@@ -127,11 +137,17 @@ const LanguageBackground = ({ onChange }) => {
               type="text"
               variant="standard"
               required
+              value={value.other_language || ""}
             />
           </FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <RadioGroup row onChange={handleChange} name="other_proficiency">
+          <RadioGroup
+            row
+            onChange={handleChange}
+            name="other_proficiency"
+            value={value.other_proficiency || ""}
+          >
             <FormControlLabel
               value="no proficiency"
               control={<Radio required />}
@@ -177,6 +193,7 @@ const LanguageBackground = ({ onChange }) => {
             name="test_name"
             onChange={handleChange}
             required
+            value={value.test_name || ""}
           />
         </Grid>
       </Grid>
@@ -191,6 +208,7 @@ const LanguageBackground = ({ onChange }) => {
             onChange={handleChange}
             required
             type="date"
+            value={value.test_date || ""}
           />
         </Grid>
       </Grid>
@@ -205,6 +223,8 @@ const LanguageBackground = ({ onChange }) => {
             onChange={handleChange}
             required
             type="number"
+            onWheel={(event) => event.target.blur()}
+            value={value.test_score || ""}
           />
         </Grid>
       </Grid>

@@ -48,7 +48,12 @@ const ProposedStudy = ({ onChange, value }) => {
           <FormLabel required>Level of Study</FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <RadioGroup row name="studyLevel" onChange={handleChange}>
+          <RadioGroup
+            row
+            name="study_level"
+            onChange={handleChange}
+            value={value.study_level || ""}
+          >
             <FormControlLabel
               value="master"
               control={<Radio required />}
@@ -70,12 +75,12 @@ const ProposedStudy = ({ onChange, value }) => {
           <Select
             fullWidth
             onChange={handleChange}
-            name="courseTitle"
-            value={value.study || ""}
+            name="course_title"
+            value={value.course_title || ""}
           >
             {courses.map((option) => (
               <MenuItem value={option.value} key={option.value}>
-                <Typography variant="subtitle1">{option.label}</Typography>
+                <Typography variant="subtitle1">{option.value}</Typography>
               </MenuItem>
             ))}
           </Select>

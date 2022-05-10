@@ -9,7 +9,7 @@ import {
   Radio,
 } from "@mui/material";
 
-const RefereeDetails = ({ onChange }) => {
+const RefereeDetails = ({ onChange, value }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     onChange((prevState) => ({
@@ -28,7 +28,12 @@ const RefereeDetails = ({ onChange }) => {
           <FormLabel required>Title</FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <RadioGroup row onChange={handleChange} name="title_ref1">
+          <RadioGroup
+            row
+            onChange={handleChange}
+            name="title_ref1"
+            value={value.title_ref1 || ""}
+          >
             <FormControlLabel
               value="mr"
               control={<Radio required />}
@@ -67,6 +72,7 @@ const RefereeDetails = ({ onChange }) => {
             name="f_name_ref1"
             onChange={handleChange}
             required
+            value={value.f_name_ref1 || ""}
           />
         </Grid>
       </Grid>
@@ -80,6 +86,7 @@ const RefereeDetails = ({ onChange }) => {
             name="l_name_ref1"
             onChange={handleChange}
             required
+            value={value.l_name_ref1 || ""}
           />
         </Grid>
       </Grid>
@@ -93,6 +100,7 @@ const RefereeDetails = ({ onChange }) => {
             name="position_ref1"
             onChange={handleChange}
             required
+            value={value.position_ref1 || ""}
           />
         </Grid>
       </Grid>
@@ -106,6 +114,7 @@ const RefereeDetails = ({ onChange }) => {
             name="relationship_ref1"
             onChange={handleChange}
             required
+            value={value.relationship_ref1 || ""}
           />
         </Grid>
       </Grid>
@@ -119,6 +128,7 @@ const RefereeDetails = ({ onChange }) => {
             name="institution_ref1"
             onChange={handleChange}
             required
+            value={value.institution_ref1 || ""}
           />
         </Grid>
       </Grid>
@@ -132,6 +142,7 @@ const RefereeDetails = ({ onChange }) => {
             name="country_ref1"
             onChange={handleChange}
             required
+            value={value.country_ref1 || ""}
           />
         </Grid>
       </Grid>
@@ -145,7 +156,9 @@ const RefereeDetails = ({ onChange }) => {
             name="phone_ref1"
             onChange={handleChange}
             type="number"
+            onWheel={(event) => event.target.blur()}
             required
+            value={value.phone_ref1 || ""}
           />
         </Grid>
       </Grid>
@@ -159,6 +172,8 @@ const RefereeDetails = ({ onChange }) => {
             name="email_ref1"
             onChange={handleChange}
             required
+            type="email"
+            value={value.email_ref1 || ""}
           />
         </Grid>
       </Grid>
@@ -169,7 +184,12 @@ const RefereeDetails = ({ onChange }) => {
           <FormLabel required>Title</FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <RadioGroup row onChange={handleChange} name="title_ref2">
+          <RadioGroup
+            row
+            onChange={handleChange}
+            name="title_ref2"
+            value={value.title_ref2 || ""}
+          >
             <FormControlLabel
               value="mr"
               control={<Radio required />}
@@ -208,6 +228,7 @@ const RefereeDetails = ({ onChange }) => {
             name="f_name_ref2"
             onChange={handleChange}
             required
+            value={value.f_name_ref2 || ""}
           />
         </Grid>
       </Grid>
@@ -221,6 +242,7 @@ const RefereeDetails = ({ onChange }) => {
             name="l_name_ref2"
             onChange={handleChange}
             required
+            value={value.l_name_ref2 || ""}
           />
         </Grid>
       </Grid>
@@ -234,6 +256,7 @@ const RefereeDetails = ({ onChange }) => {
             name="position_ref2"
             onChange={handleChange}
             required
+            value={value.position_ref2 || ""}
           />
         </Grid>
       </Grid>
@@ -247,6 +270,7 @@ const RefereeDetails = ({ onChange }) => {
             name="relationship_ref2"
             onChange={handleChange}
             required
+            value={value.relationship_ref2 || ""}
           />
         </Grid>
       </Grid>
@@ -260,6 +284,7 @@ const RefereeDetails = ({ onChange }) => {
             name="institution_ref2"
             onChange={handleChange}
             required
+            value={value.institution_ref2 || ""}
           />
         </Grid>
       </Grid>
@@ -273,6 +298,7 @@ const RefereeDetails = ({ onChange }) => {
             name="country_ref2"
             onChange={handleChange}
             required
+            value={value.country_ref2 || ""}
           />
         </Grid>
       </Grid>
@@ -286,7 +312,9 @@ const RefereeDetails = ({ onChange }) => {
             name="phone_ref2"
             onChange={handleChange}
             type="number"
+            onWheel={(event) => event.target.blur()}
             required
+            value={value.phone_ref2 || ""}
           />
         </Grid>
       </Grid>
@@ -300,6 +328,8 @@ const RefereeDetails = ({ onChange }) => {
             name="email_ref2"
             onChange={handleChange}
             required
+            type="email"
+            value={value.email_ref2 || ""}
           />
         </Grid>
       </Grid>

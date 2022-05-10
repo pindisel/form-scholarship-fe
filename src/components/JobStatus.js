@@ -27,7 +27,12 @@ const JobStatus = ({ onChange, value }) => {
           <FormLabel required>Unemployed</FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <RadioGroup row onChange={handleChange} name="unemployed">
+          <RadioGroup
+            row
+            onChange={handleChange}
+            name="unemployed"
+            value={value.unemployed || ""}
+          >
             <FormControlLabel
               value="yes"
               control={<Radio required />}
@@ -46,7 +51,12 @@ const JobStatus = ({ onChange, value }) => {
           <FormLabel required>Self Employment</FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <RadioGroup row onChange={handleChange} name="self_employment">
+          <RadioGroup
+            row
+            onChange={handleChange}
+            name="self_employment"
+            value={value.self_employment || ""}
+          >
             <FormControlLabel
               value="yes"
               control={<Radio required />}
@@ -65,7 +75,12 @@ const JobStatus = ({ onChange, value }) => {
           <FormLabel required>Are you currently employed?</FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <RadioGroup row onChange={handleChange} name="employed">
+          <RadioGroup
+            row
+            onChange={handleChange}
+            name="employed"
+            value={value.employed || ""}
+          >
             <FormControlLabel
               value="yes"
               control={<Radio required />}
@@ -90,7 +105,7 @@ const JobStatus = ({ onChange, value }) => {
                 fullWidth
                 name="position"
                 onChange={handleChange}
-                disabled={true}
+                value={value.position || ""}
               />
             </Grid>
           </Grid>
@@ -103,6 +118,7 @@ const JobStatus = ({ onChange, value }) => {
                 fullWidth
                 name="organization_name"
                 onChange={handleChange}
+                value={value.organization_name || ""}
               />
             </Grid>
           </Grid>
@@ -115,6 +131,7 @@ const JobStatus = ({ onChange, value }) => {
                 fullWidth
                 name="organization_address"
                 onChange={handleChange}
+                value={value.organization_address || ""}
               />
             </Grid>
           </Grid>
@@ -128,6 +145,7 @@ const JobStatus = ({ onChange, value }) => {
                 name="date"
                 onChange={handleChange}
                 type="date"
+                value={value.date || ""}
               />
             </Grid>
           </Grid>
@@ -136,7 +154,12 @@ const JobStatus = ({ onChange, value }) => {
               <FormLabel required>Organization Type</FormLabel>
             </Grid>
             <Grid item xs={9}>
-              <RadioGroup row onChange={handleChange} name="organization_type">
+              <RadioGroup
+                row
+                onChange={handleChange}
+                name="organization_type"
+                value={value.organization_type || ""}
+              >
                 <FormControlLabel
                   value="government/public"
                   control={<Radio required />}

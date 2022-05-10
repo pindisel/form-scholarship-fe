@@ -9,7 +9,7 @@ import {
   Radio,
 } from "@mui/material";
 
-const PersonalDetails = ({ onChange }) => {
+const PersonalDetails = ({ onChange, value }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     onChange((prevState) => ({
@@ -17,6 +17,7 @@ const PersonalDetails = ({ onChange }) => {
       [name]: value,
     }));
   };
+  // console.log(value);
 
   return (
     <>
@@ -28,7 +29,12 @@ const PersonalDetails = ({ onChange }) => {
           <FormLabel required>Title</FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <RadioGroup row onChange={handleChange} name="title">
+          <RadioGroup
+            row
+            onChange={handleChange}
+            name="title"
+            value={value.title || ""}
+          >
             <FormControlLabel
               value="mr"
               control={<Radio required />}
@@ -62,7 +68,13 @@ const PersonalDetails = ({ onChange }) => {
           <FormLabel required>Family Name</FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <TextField fullWidth name="f_name" onChange={handleChange} required />
+          <TextField
+            fullWidth
+            name="f_name"
+            onChange={handleChange}
+            required
+            value={value.f_name || ""}
+          />
         </Grid>
       </Grid>
       <Grid container spacing={2}>
@@ -70,7 +82,13 @@ const PersonalDetails = ({ onChange }) => {
           <FormLabel required>Given Name</FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <TextField fullWidth name="l_name" onChange={handleChange} required />
+          <TextField
+            fullWidth
+            name="l_name"
+            onChange={handleChange}
+            required
+            value={value.l_name || ""}
+          />
         </Grid>
       </Grid>
       <Grid container spacing={2}>
@@ -86,6 +104,7 @@ const PersonalDetails = ({ onChange }) => {
             name="birth_place"
             onChange={handleChange}
             required
+            value={value.birth_place || ""}
           />
         </Grid>
       </Grid>
@@ -100,6 +119,7 @@ const PersonalDetails = ({ onChange }) => {
             type="date"
             onChange={handleChange}
             required
+            value={value.birth_date || ""}
           />
         </Grid>
       </Grid>
@@ -108,7 +128,13 @@ const PersonalDetails = ({ onChange }) => {
           <FormLabel required>Gender</FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <RadioGroup row name="gender" onChange={handleChange}>
+          <RadioGroup
+            row
+            name="gender"
+            onChange={handleChange}
+            value={value.gender || ""}
+            required
+          >
             <FormControlLabel
               value="male"
               control={<Radio required />}
@@ -132,6 +158,7 @@ const PersonalDetails = ({ onChange }) => {
             name="country"
             onChange={handleChange}
             required
+            value={value.country || ""}
           />
         </Grid>
       </Grid>
@@ -145,7 +172,9 @@ const PersonalDetails = ({ onChange }) => {
             name="national_num"
             onChange={handleChange}
             type="number"
+            onWheel={(event) => event.target.blur()}
             required
+            value={value.national_num || ""}
           />
         </Grid>
       </Grid>
@@ -161,7 +190,11 @@ const PersonalDetails = ({ onChange }) => {
                 name="passport_num"
                 onChange={handleChange}
                 type="number"
+                onWheel={(event) => {
+                  event.preventDefault();
+                }}
                 required
+                value={value.passport_num || ""}
               />
             </Grid>
             <Grid item xs={6}>
@@ -176,6 +209,7 @@ const PersonalDetails = ({ onChange }) => {
                     onChange={handleChange}
                     type="date"
                     required
+                    value={value.issue_date || ""}
                   />
                 </Grid>
                 <Grid item xs={6}>
@@ -188,6 +222,7 @@ const PersonalDetails = ({ onChange }) => {
                     onChange={handleChange}
                     type="date"
                     required
+                    value={value.expiry_date || ""}
                   />
                 </Grid>
               </Grid>

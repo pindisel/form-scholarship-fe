@@ -8,6 +8,8 @@ import {
   LanguageBackground,
   JobStatus,
   RefereeDetails,
+  ApplicantsDeclaration,
+  DocumentUpload,
 } from "../components";
 import { PersonalService } from "../services/personal.service";
 import { ContactService } from "../services/contact.service";
@@ -18,7 +20,7 @@ import { LanguageService } from "../services/language.service";
 import { JobService } from "../services/job.service";
 import { RefereeService } from "../services/referee.service";
 
-import { Container } from "@mui/material";
+import { Container, Button, Stack } from "@mui/material";
 
 const StudentRegist = () => {
   const onSubmit = async (e) => {
@@ -43,8 +45,9 @@ const StudentRegist = () => {
       await LanguageService.createLanguage(language);
       await JobService.createJob(job);
       await RefereeService.createReferee(referee);
+      alert("Successfully submitted");
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   };
   const [personal, setPersonal] = useState({});
@@ -55,24 +58,75 @@ const StudentRegist = () => {
   const [language, setLanguage] = useState({});
   const [job, setJob] = useState({});
   const [referee, setReferee] = useState({});
-  // console.log(personal);
-  // console.log(contact);
-  // console.log(finance);
-  // console.log(study);
-  // console.log(education);
+  const [pages, setPages] = useState(1);
+  let component = null;
+
+  if (pages === 1) {
+    component = <PersonalDetails onChange={setPersonal} value={personal} />;
+  } else if (pages === 2) {
+    component = <ContactDetails onChange={setContact} value={contact} />;
+  } else if (pages === 3) {
+    component = <FinancialSupport onChange={setFinance} value={finance} />;
+  } else if (pages === 4) {
+    component = <ProposedStudy onChange={setStudy} value={study} />;
+  } else if (pages === 5) {
+    component = (
+      <EducationBackground onChange={setEducation} value={education} />
+    );
+  } else if (pages === 6) {
+    component = <LanguageBackground onChange={setLanguage} value={language} />;
+  } else if (pages === 7) {
+    component = <JobStatus onChange={setJob} value={job} />;
+  } else if (pages === 8) {
+    component = <RefereeDetails onChange={setReferee} value={referee} />;
+  } else if (pages === 9) {
+    component = <ApplicantsDeclaration />;
+  } else if (pages === 10) {
+    component = <DocumentUpload />;
+  }
   return (
     <>
-      <Container>
+      <Container
+        sx={{
+          mt: "2rem",
+        }}
+      >
         <form onSubmit={onSubmit}>
-          <PersonalDetails onChange={setPersonal} value={personal} />
-          <ContactDetails onChange={setContact} value={contact} />
-          <FinancialSupport onChange={setFinance} value={finance} />
-          <ProposedStudy onChange={setStudy} value={study} />
-          <EducationBackground onChange={setEducation} value={education} />
-          <LanguageBackground onChange={setLanguage} value={language} />
-          <JobStatus onChange={setJob} value={job} />
-          <RefereeDetails onChange={setReferee} value={referee} />
-          <button type="submit">Submit</button>
+          {component}
+          <Stack direction="row" spacing={2} justifyContent="flex-end">
+            {pages > 1 && (
+              <Button
+                type="button"
+                onClick={() => setPages(pages - 1)}
+                variant="contained"
+                color="primary"
+                style={{ margin: "10px" }}
+              >
+                Back
+              </Button>
+            )}
+            {pages < 10 && (
+              <Button
+                type="button"
+                variant="contained"
+                color="primary"
+                onClick={() => setPages(pages + 1)}
+                style={{ margin: "10px" }}
+              >
+                Next
+              </Button>
+            )}
+            {pages === 10 && (
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                style={{ margin: "10px" }}
+              >
+                Save and Submit
+              </Button>
+            )}
+          </Stack>
         </form>
       </Container>
     </>

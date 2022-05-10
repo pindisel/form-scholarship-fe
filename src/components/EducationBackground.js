@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField, Typography, Grid, FormLabel } from "@mui/material";
 
-const EducationalBackground = ({ onChange }) => {
+const EducationalBackground = ({ onChange, value }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     onChange((prevState) => ({
@@ -9,6 +9,7 @@ const EducationalBackground = ({ onChange }) => {
       [name]: value,
     }));
   };
+  // console.log(value);
 
   return (
     <>
@@ -25,9 +26,10 @@ const EducationalBackground = ({ onChange }) => {
         <Grid item xs={9}>
           <TextField
             fullWidth
-            name="undergradName"
+            name="undergrad_institution"
             onChange={handleChange}
             required
+            value={value.undergrad_institution || ""}
           />
         </Grid>
       </Grid>
@@ -38,20 +40,22 @@ const EducationalBackground = ({ onChange }) => {
         <Grid item xs={5}>
           <TextField
             fullWidth
-            name="undergradProvince"
+            name="undergrad_province"
             onChange={handleChange}
             required
+            value={value.undergrad_province || ""}
           />
         </Grid>
         <Grid item xs={1}>
-          <FormLabel>Country</FormLabel>
+          <FormLabel required>Country</FormLabel>
         </Grid>
         <Grid item xs={3}>
           <TextField
             fullWidth
-            name="undergradCountry"
-            onChange={onChange}
+            name="undergrad_country"
+            onChange={handleChange}
             required
+            value={value.undergrad_country || ""}
           />
         </Grid>
       </Grid>
@@ -60,7 +64,13 @@ const EducationalBackground = ({ onChange }) => {
           <FormLabel required>Language of Instruction</FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <TextField fullWidth name="undergradLanguage" />
+          <TextField
+            fullWidth
+            name="undergrad_language"
+            onChange={handleChange}
+            required
+            value={value.undergrad_language || ""}
+          />
         </Grid>
       </Grid>
       <Grid container spacing={2}>
@@ -70,10 +80,11 @@ const EducationalBackground = ({ onChange }) => {
         <Grid item xs={9}>
           <TextField
             fullWidth
-            name="undergradDate"
+            name="undergrad_date"
             type="date"
             onChange={handleChange}
             required
+            value={value.undergrad_date || ""}
           />
         </Grid>
       </Grid>
@@ -87,9 +98,10 @@ const EducationalBackground = ({ onChange }) => {
         <Grid item xs={9}>
           <TextField
             fullWidth
-            name="masterName"
+            name="master_institution"
             onChange={handleChange}
             required
+            value={value.master_institution || ""}
           />
         </Grid>
       </Grid>
@@ -100,20 +112,22 @@ const EducationalBackground = ({ onChange }) => {
         <Grid item xs={5}>
           <TextField
             fullWidth
-            name="masterProvince"
+            name="master_province"
             onChange={handleChange}
             required
+            value={value.master_province || ""}
           />
         </Grid>
         <Grid item xs={1}>
-          <FormLabel>Country</FormLabel>
+          <FormLabel required>Country</FormLabel>
         </Grid>
         <Grid item xs={3}>
           <TextField
             fullWidth
-            name="masterCountry"
+            name="master_country"
             onChange={handleChange}
             required
+            value={value.master_country || ""}
           />
         </Grid>
       </Grid>
@@ -122,7 +136,13 @@ const EducationalBackground = ({ onChange }) => {
           <FormLabel required>Language of Instruction</FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <TextField fullWidth name="masterLanguage" onChange={handleChange} />
+          <TextField
+            fullWidth
+            name="master_language"
+            onChange={handleChange}
+            required
+            value={value.master_language || ""}
+          />
         </Grid>
       </Grid>
       <Grid container spacing={2}>
@@ -132,10 +152,11 @@ const EducationalBackground = ({ onChange }) => {
         <Grid item xs={9}>
           <TextField
             fullWidth
-            name="masterDate"
+            name="master_date"
             type="date"
             onChange={handleChange}
             required
+            value={value.master_date || ""}
           />
         </Grid>
       </Grid>

@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField, Typography, Grid, FormLabel } from "@mui/material";
 
-const ContactDetails = ({ onChange }) => {
+const ContactDetails = ({ onChange, value }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     onChange((prevState) => ({
@@ -27,6 +27,7 @@ const ContactDetails = ({ onChange }) => {
             name="address1"
             onChange={handleChange}
             required
+            value={value.address1 || ""}
           />
         </Grid>
       </Grid>
@@ -40,6 +41,7 @@ const ContactDetails = ({ onChange }) => {
             name="address2"
             onChange={handleChange}
             required
+            value={value.address2 || ""}
           />
         </Grid>
       </Grid>
@@ -48,7 +50,13 @@ const ContactDetails = ({ onChange }) => {
           <FormLabel required>Town/City</FormLabel>
         </Grid>
         <Grid item xs={5}>
-          <TextField fullWidth name="city" onChange={handleChange} required />
+          <TextField
+            fullWidth
+            name="city"
+            onChange={handleChange}
+            required
+            value={value.city || ""}
+          />
         </Grid>
         <Grid item xs={1}>
           <FormLabel required>Postal Code</FormLabel>
@@ -59,7 +67,9 @@ const ContactDetails = ({ onChange }) => {
             name="postal_code"
             onChange={handleChange}
             type="number"
+            onWheel={(event) => event.target.blur()}
             required
+            value={value.postal_code || ""}
           />
         </Grid>
       </Grid>
@@ -73,6 +83,7 @@ const ContactDetails = ({ onChange }) => {
             name="province"
             onChange={handleChange}
             required
+            value={value.province || ""}
           />
         </Grid>
       </Grid>
@@ -86,6 +97,7 @@ const ContactDetails = ({ onChange }) => {
             name="country"
             onChange={handleChange}
             required
+            value={value.country || ""}
           />
         </Grid>
       </Grid>
@@ -102,7 +114,9 @@ const ContactDetails = ({ onChange }) => {
             name="home_phone"
             onChange={handleChange}
             type="number"
+            onWheel={(event) => event.target.blur()}
             required
+            value={value.home_phone || ""}
           />
         </Grid>
       </Grid>
@@ -116,7 +130,9 @@ const ContactDetails = ({ onChange }) => {
             name="mobile_phone"
             onChange={handleChange}
             type="number"
+            onWheel={(event) => event.target.blur()}
             required
+            value={value.mobile_phone || ""}
           />
         </Grid>
       </Grid>
@@ -134,6 +150,7 @@ const ContactDetails = ({ onChange }) => {
             onChange={handleChange}
             type="email"
             required
+            value={value.primary_email || ""}
           />
         </Grid>
       </Grid>
@@ -148,6 +165,7 @@ const ContactDetails = ({ onChange }) => {
             onChange={handleChange}
             type="email"
             required
+            value={value.alternate_email || ""}
           />
         </Grid>
       </Grid>

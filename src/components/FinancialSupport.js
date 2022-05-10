@@ -8,7 +8,7 @@ import {
   Radio,
 } from "@mui/material";
 
-const FinancialSupport = ({ onChange }) => {
+const FinancialSupport = ({ onChange, value }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     onChange((prevState) => ({
@@ -26,7 +26,11 @@ const FinancialSupport = ({ onChange }) => {
           <FormLabel required>Apply for Admission:</FormLabel>
         </Grid>
         <Grid item xs={9}>
-          <RadioGroup name="finance" onChange={handleChange}>
+          <RadioGroup
+            name="finance_type"
+            onChange={handleChange}
+            value={value.finance_type || ""}
+          >
             <FormControlLabel
               value="self"
               control={<Radio required />}

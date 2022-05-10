@@ -6,3 +6,5 @@ export { default as EducationBackground } from "./EducationBackground";
 export { default as LanguageBackground } from "./LanguageBackground";
 export { default as JobStatus } from "./JobStatus";
 export { default as RefereeDetails } from "./RefereeDetails";
+export { default as ApplicantsDeclaration } from "./ApplicantsDeclaration";
+export { default as DocumentUpload } from "./DocumentUpload";
