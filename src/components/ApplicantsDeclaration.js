@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography, Checkbox, FormControlLabel } from "@mui/material";
 
 const ApplicantsDeclaration = () => {
+  const [checked1, setChecked1] = useState(false);
+  const [checked2, setChecked2] = useState(false);
   return (
     <>
       <Typography variant="h5" gutterBottom>
         I. Applicants Declaration
       </Typography>
       <FormControlLabel
-        control={<Checkbox required />}
+        control={
+          <Checkbox
+            checked={checked1}
+            onChange={(e) => setChecked1(!checked1)}
+            name="checked"
+            color="primary"
+            required
+          />
+        }
         label={<Typography variant="h6">Understanding</Typography>}
       />
       <Typography variant="body1" gutterBottom>
@@ -28,7 +38,15 @@ const ApplicantsDeclaration = () => {
         be returned.
       </Typography>
       <FormControlLabel
-        control={<Checkbox required />}
+        control={
+          <Checkbox
+            checked={checked2}
+            onChange={(e) => setChecked2(!checked2)}
+            name="checked"
+            color="primary"
+            required
+          />
+        }
         label={<Typography variant="h6">Agreement</Typography>}
       />
       <Typography variant="body1" gutterBottom>

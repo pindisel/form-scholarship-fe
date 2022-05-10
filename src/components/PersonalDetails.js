@@ -157,8 +157,8 @@ const PersonalDetails = ({ onChange, value }) => {
             fullWidth
             name="country"
             onChange={handleChange}
-            required
             value={value.country || ""}
+            defaultValue={"Canada"}
           />
         </Grid>
       </Grid>
