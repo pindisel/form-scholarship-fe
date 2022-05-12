@@ -76,7 +76,7 @@ const StudentRegist = () => {
     //   alert("Please select your country");
     // }
 
-    var size = Object.keys(personal);
+    // var size = Object.keys(personal);
     // var data = {};
     // size.forEach((element) => {
     //   data = { ...data, [element]: personal[element] };
@@ -107,7 +107,6 @@ const StudentRegist = () => {
   const [language, setLanguage] = useState({});
   const [job, setJob] = useState({});
   const [referee, setReferee] = useState({});
-  const [document, setDocument] = useState({});
   const [document1, setDocument1] = useState(null);
   const [document2, setDocument2] = useState(null);
   const [document3, setDocument3] = useState(null);
@@ -150,57 +149,62 @@ const StudentRegist = () => {
         setDocument7={setDocument7}
         setDocument8={setDocument8}
         setDocument9={setDocument9}
-        value={document}
       />
     );
   } else if (pages === 10) {
     component = <ApplicantsDeclaration />;
   }
+
+  const token = localStorage.getItem("token");
+  const user = localStorage.getItem("user");
+
   return (
     <>
-      <Container
-        sx={{
-          mt: "2rem",
-        }}
-      >
-        <form onSubmit={onSubmit}>
-          {component}
-          <Stack direction="row" spacing={2} justifyContent="flex-end">
-            {pages > 1 && (
-              <Button
-                type="button"
-                onClick={() => setPages(pages - 1)}
-                variant="contained"
-                color="primary"
-                style={{ margin: "10px" }}
-              >
-                Back
-              </Button>
-            )}
-            {pages < 10 && (
-              <Button
-                type="button"
-                variant="contained"
-                color="primary"
-                onClick={() => setPages(pages + 1)}
-                style={{ margin: "10px" }}
-              >
-                Next
-              </Button>
-            )}
-            {pages === 10 && (
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                style={{ margin: "10px" }}
-              >
-                Save and Submit
-              </Button>
-            )}
-          </Stack>
-        </form>
-      </Container>
+      {token && user ? (
+        <Container
+          sx={{
+            mt: "2rem",
+          }}
+        >
+          <form onSubmit={onSubmit}>
+            {component}
+            <Stack direction="row" spacing={2} justifyContent="flex-end">
+              {pages > 1 && (
+                <Button
+                  type="button"
+                  onClick={() => setPages(pages - 1)}
+                  variant="contained"
+                  color="primary"
+                  style={{ margin: "10px" }}
+                >
+                  Back
+                </Button>
+              )}
+              {pages < 10 && (
+                <Button
+                  type="button"
+                  variant="contained"
+                  color="primary"
+                  onClick={() => setPages(pages + 1)}
+                  style={{ margin: "10px" }}
+                >
+                  Next
+                </Button>
+              )}
+              {pages === 10 && (
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  style={{ margin: "10px" }}
+                >
+                  Save and Submit
+                </Button>
+              )}
+            </Stack>
+          </form>
+        </Container>
+      ) : null}
     </>
   );
 };

@@ -25,17 +25,29 @@ const Signup = () => {
   };
 
   const onSubmit = async (e) => {
+    e.preventDefault();
     const data = {
       nama: nama,
       email: email,
       password: password,
     };
-    console.log(data);
+    // console.log(data);
     try {
-      const response = await UserService.createUser(data);
-      // console.log(response);
-      alert("Berhasil Registrasi");
-      navigate("/signin");
+      if (
+        nama === "" ||
+        email === "" ||
+        password === "" ||
+        nama === null ||
+        email === null ||
+        password === null
+      ) {
+        const response = await UserService.createUser(data);
+        console.log(response);
+        navigate("/signin");
+        alert("Berhasil Registrasi");
+      } else {
+        throw new Error("Fill all the fields");
+      }
     } catch (error) {
       alert(error.message);
     }
@@ -86,6 +98,7 @@ const Signup = () => {
 
                 borderRadius: "5px",
               }}
+              value={nama || ""}
             />
             <Typography
               variant="h5"
@@ -109,6 +122,7 @@ const Signup = () => {
                 backgroundColor: "#fff",
                 borderRadius: "5px",
               }}
+              value={email || ""}
             />
             <Typography
               variant="h5"
@@ -141,6 +155,7 @@ const Signup = () => {
                 backgroundColor: "#fff",
                 borderRadius: "5px",
               }}
+              value={password || ""}
             />
             <Button
               variant="contained"

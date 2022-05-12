@@ -158,7 +158,6 @@ const PersonalDetails = ({ onChange, value }) => {
             name="country"
             onChange={handleChange}
             value={value.country || ""}
-            defaultValue={"Canada"}
           />
         </Grid>
       </Grid>

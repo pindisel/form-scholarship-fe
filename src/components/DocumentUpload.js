@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Typography, Input, List, Stack, Box } from "@mui/material";
+import React from "react";
+import { Typography, Input, List, Stack } from "@mui/material";
 
 const DocumentUpload = ({
   setDocument1,
@@ -11,7 +11,6 @@ const DocumentUpload = ({
   setDocument7,
   setDocument8,
   setDocument9,
-  value,
 }) => {
   return (
     <>

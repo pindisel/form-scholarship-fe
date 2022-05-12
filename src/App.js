@@ -22,8 +22,8 @@ const theme = createTheme({
 });
 
 function App() {
-  const token = sessionStorage.getItem("token");
-  const user = sessionStorage.getItem("user");
+  // const token = sessionStorage.getItem("token");
+  // const user = sessionStorage.getItem("user");
   return (
     <>
       <ThemeProvider theme={theme}>
