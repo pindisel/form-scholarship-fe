@@ -1,10 +1,22 @@
 import React from "react";
-import { StudentRegist } from "./pages";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import { StudentRegist, Login, Signup } from "./pages";
 
 function App() {
   return (
     <>
-      <StudentRegist />
+      <Router>
+        <Routes>
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/regist" element={<StudentRegist />} />
+        </Routes>
+      </Router>
     </>
   );
 }
