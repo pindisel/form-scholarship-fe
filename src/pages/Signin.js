@@ -23,6 +23,7 @@ const Login = () => {
   // console.log(password);
 
   const onSubmit = async (e) => {
+    e.preventDefault();
     const data = {
       email: email,
       password: password,
@@ -35,6 +36,7 @@ const Login = () => {
         localStorage.setItem("token", response.data.data.token);
         localStorage.setItem("user", JSON.stringify(response.data.data.user));
         navigate("/regist");
+        window.location.reload();
       } else {
         throw new Error(response.data.message);
       }
