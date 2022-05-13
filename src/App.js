@@ -5,7 +5,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import { StudentRegist, Login, Signup } from "./pages";
+import { StudentRegist, Login, Signup, GetDetails } from "./pages";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -22,42 +22,36 @@ const theme = createTheme({
 });
 
 function App() {
-  // const token = sessionStorage.getItem("token");
-  // const user = sessionStorage.getItem("user");
+  const token = localStorage.getItem("token");
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user.role);
   return (
     <>
       <ThemeProvider theme={theme}>
         <Router>
-          <Routes>
-            <Route
-              exact
-              path="/*"
-              element={<Navigate to="/signin" replace />}
-            />
-            <Route exact path="/signin" element={<Login />} />
-            <Route exact path="/signup" element={<Signup />} />
-            <Route exact path="/regist" element={<StudentRegist />} />
-          </Routes>
-          {/* {token && user ? (
-          <Routes>
-            <Route
-              exact
-              path="/*"
-              element={<Navigate to="/regist" replace />}
-            />
-            <Route exact path="/regist" element={<StudentRegist />} />
-          </Routes>
-        ) : (
-          <Routes>
-            <Route
-              exact
-              path="/*"
-              element={<Navigate to="/signin" replace />}
-            />
-            <Route exact path="/signin" element={<Login />} />
-            <Route exact path="/signup" element={<Signup />} />
-          </Routes>
-        )} */}
+          {token && user ? (
+            <Routes>
+              {/* <Route
+                exact
+                path="/*"
+                element={<Navigate to="/regist" replace />}
+              /> */}
+              <Route exact path="/regist" element={<StudentRegist />} />
+              {user.role === "admin" ? (
+                <Route exact path="/details" element={<GetDetails />} />
+              ) : null}
+            </Routes>
+          ) : (
+            <Routes>
+              <Route
+                exact
+                path="/*"
+                element={<Navigate to="/signin" replace />}
+              />
+              <Route exact path="/signin" element={<Login />} />
+              <Route exact path="/signup" element={<Signup />} />
+            </Routes>
+          )}
         </Router>
       </ThemeProvider>
     </>

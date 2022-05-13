@@ -174,7 +174,9 @@ const Signup = () => {
               mt: 3,
             }}
           >
-            <Typography variant="h6">Sudah memiliki akun?</Typography>
+            <Typography variant="h6" color="#fff" textAlign="center">
+              Already have an account?
+            </Typography>
             <Button
               variant="contained"
               type="submit"

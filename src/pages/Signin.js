@@ -146,7 +146,7 @@ const Login = () => {
             }}
           >
             <Typography variant="h6" color="#fff" textAlign="center">
-              Belum memiliki akun?
+              Don't have an account?
             </Typography>
             <Button
               variant="contained"
