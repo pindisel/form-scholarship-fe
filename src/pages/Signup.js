@@ -31,22 +31,21 @@ const Signup = () => {
       email: email,
       password: password,
     };
-    // console.log(data);
     try {
       if (
-        nama === "" ||
-        email === "" ||
-        password === "" ||
-        nama === null ||
-        email === null ||
-        password === null
+        data.nama === "" ||
+        data.email === "" ||
+        data.password === "" ||
+        data.nama === null ||
+        data.email === null ||
+        data.password === null
       ) {
+        throw new Error("Please fill all the fields");
+      } else {
         const response = await UserService.createUser(data);
         console.log(response);
         navigate("/signin");
         alert("Berhasil Registrasi");
-      } else {
-        throw new Error("Fill all the fields");
       }
     } catch (error) {
       alert(error.message);
@@ -179,7 +178,6 @@ const Signup = () => {
             </Typography>
             <Button
               variant="contained"
-              type="submit"
               style={{ borderRadius: 10 }}
               fullWidth
               onClick={() => {
