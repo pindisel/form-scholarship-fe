@@ -31,11 +31,11 @@ function App() {
         <Router>
           {token && user ? (
             <Routes>
-              {/* <Route
+              <Route
                 exact
                 path="/*"
                 element={<Navigate to="/regist" replace />}
-              /> */}
+              />
               <Route exact path="/regist" element={<StudentRegist />} />
               {user.role === "admin" ? (
                 <Route exact path="/details" element={<GetDetails />} />
