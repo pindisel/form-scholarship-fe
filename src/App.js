@@ -24,7 +24,7 @@ const theme = createTheme({
 function App() {
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user.role);
+  // console.log(user.role);
   return (
     <>
       <ThemeProvider theme={theme}>
