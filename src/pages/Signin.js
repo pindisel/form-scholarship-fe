@@ -23,7 +23,6 @@ const Login = () => {
   // console.log(password);
 
   const onSubmit = async (e) => {
-    e.preventDefault();
     const data = {
       email: email,
       password: password,
