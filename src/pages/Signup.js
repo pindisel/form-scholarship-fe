@@ -25,6 +25,7 @@ const Signup = () => {
   };
 
   const onSubmit = async (e) => {
+    e.preventDefault();
     const data = {
       name: nama,
       email: email,

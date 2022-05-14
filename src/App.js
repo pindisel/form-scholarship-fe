@@ -29,7 +29,7 @@ function App() {
   const user = JSON.parse(localStorage.getItem("user"));
   const expiration = localStorage.getItem("expiration");
   const now = new Date();
-  console.log(now.getTime() + " " + expiration);
+  // console.log(now.getTime() + " " + expiration);
   // console.log(user.role);
   return (
     <>
