@@ -3,9 +3,10 @@ import {
   FormControlLabel,
   RadioGroup,
   Typography,
-  Grid,
   FormLabel,
   Radio,
+  Container,
+  Stack,
 } from "@mui/material";
 
 const FinancialSupport = ({ onChange, value }) => {
@@ -21,21 +22,23 @@ const FinancialSupport = ({ onChange, value }) => {
       <Typography variant="h5" gutterBottom>
         C. Financial Support
       </Typography>
-      <Grid container spacing={2}>
-        <Grid item xs={3}>
+      <Container>
+        <RadioGroup
+          name="finance_type"
+          onChange={handleChange}
+          value={value.finance_type || ""}
+        >
+          <FormControlLabel
+            value="self"
+            control={<Radio required />}
+            label="Self Financing"
+          />
           <FormLabel required>Apply for Admission:</FormLabel>
-        </Grid>
-        <Grid item xs={9}>
-          <RadioGroup
-            name="finance_type"
-            onChange={handleChange}
-            value={value.finance_type || ""}
+          <Stack
+            sx={{
+              ml: "50px",
+            }}
           >
-            <FormControlLabel
-              value="self"
-              control={<Radio required />}
-              label="Self Financing"
-            />
             <FormControlLabel
               value="master"
               control={<Radio required />}
@@ -51,9 +54,9 @@ const FinancialSupport = ({ onChange, value }) => {
               control={<Radio required />}
               label="BAZNAS - IIIU Admission for Doctor Program"
             />
-          </RadioGroup>
-        </Grid>
-      </Grid>
+          </Stack>
+        </RadioGroup>
+      </Container>
     </>
   );
 };

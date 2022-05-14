@@ -47,7 +47,7 @@ const ContactDetails = ({ onChange, value }) => {
       </Grid>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <FormLabel required>Town/City</FormLabel>
+          <FormLabel required>District/City</FormLabel>
         </Grid>
         <Grid item xs={5}>
           <TextField

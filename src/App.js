@@ -10,13 +10,16 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
-    green: {
-      main: "#007C4B",
-      contrastText: "#fff",
-    },
     darkBlue: {
       main: "#001730",
       contrastText: "#fff",
+    },
+    white: {
+      main: "#fff",
+      contrastText: "#000",
+    },
+    blue: {
+      main: "#02516C",
     },
   },
 });
@@ -24,12 +27,15 @@ const theme = createTheme({
 function App() {
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
+  const expiration = localStorage.getItem("expiration");
+  const now = new Date();
+  console.log(now.getTime() + " " + expiration);
   // console.log(user.role);
   return (
     <>
       <ThemeProvider theme={theme}>
         <Router>
-          {token && user ? (
+          {token && user && now.getTime() < expiration ? (
             <Routes>
               <Route
                 exact

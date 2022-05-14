@@ -40,7 +40,7 @@ const LanguageBackground = ({ onChange, value }) => {
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <FormLabel required>English</FormLabel>
+          <FormLabel required>English Proficiency</FormLabel>
         </Grid>
         <Grid item xs={9}>
           <RadioGroup
@@ -84,7 +84,9 @@ const LanguageBackground = ({ onChange, value }) => {
       </Grid>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <FormLabel required>Arabic</FormLabel>
+          <FormLabel>
+            Arabic Proficiency (for Faculty of Islamic Study)
+          </FormLabel>
         </Grid>
         <Grid item xs={9}>
           <RadioGroup

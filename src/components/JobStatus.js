@@ -137,7 +137,7 @@ const JobStatus = ({ onChange, value }) => {
           </Grid>
           <Grid container spacing={2}>
             <Grid item xs={3}>
-              <FormLabel>Date Commenced</FormLabel>
+              <FormLabel>Starting Date</FormLabel>
             </Grid>
             <Grid item xs={9}>
               <TextField
@@ -166,14 +166,24 @@ const JobStatus = ({ onChange, value }) => {
                   label="Government/Public"
                 />
                 <FormControlLabel
+                  value="private"
+                  control={<Radio required />}
+                  label="Private"
+                />
+                <FormControlLabel
+                  value="education"
+                  control={<Radio required />}
+                  label="Education"
+                />
+                <FormControlLabel
                   value="ngo/civil society"
                   control={<Radio required />}
                   label="NGO/Civil Society"
                 />
                 <FormControlLabel
-                  value="private"
+                  value="other"
                   control={<Radio required />}
-                  label="Private"
+                  label="Other"
                 />
               </RadioGroup>
             </Grid>

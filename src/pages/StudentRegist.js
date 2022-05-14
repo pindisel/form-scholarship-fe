@@ -20,33 +20,23 @@ import { LanguageService } from "../services/language.service";
 import { JobService } from "../services/job.service";
 import { RefereeService } from "../services/referee.service";
 import { DocumentService } from "../services/document.service";
-import { Container, Button, Stack } from "@mui/material";
+import {
+  Container,
+  Button,
+  Stack,
+  AppBar,
+  Typography,
+  Grid,
+} from "@mui/material";
+import Logo from "../assets/images/Logo.png";
+import Icon from "../assets/icons/icon.svg";
+import { useNavigate } from "react-router-dom";
 
 const StudentRegist = () => {
+  const navigate = useNavigate();
+
   const onSubmit = async (e) => {
     e.preventDefault();
-    // console.log(
-    //   personal,
-    //   contact,
-    //   finance,
-    //   study,
-    //   education,
-    //   language,
-    //   job,
-    //   referee
-    // );
-    // console.log(document);
-    // console.log(
-    //   document1,
-    //   document2,
-    //   document3,
-    //   document4,
-    //   document5,
-    //   document6,
-    //   document7,
-    //   document8,
-    //   document9
-    // );
     const formData = new FormData();
     formData.append("files", document1);
     formData.append("files", document2);
@@ -156,54 +146,115 @@ const StudentRegist = () => {
   }
 
   const token = localStorage.getItem("token");
-  const user = localStorage.getItem("user");
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const appBar = (
+    <AppBar position="static" color="transparent" elevation={0}>
+      <Stack
+        spacing={2}
+        alignItems="flex-end"
+        justifyContent="center"
+        style={{
+          paddingTop: "10px",
+          paddingBottom: "10px",
+          paddingRight: "50px",
+        }}
+        sx={{
+          backgroundColor: "blue.main",
+        }}
+      >
+        <img src={Logo} alt="logo" style={{ width: "200px" }} />
+      </Stack>
+      <Grid
+        container
+        spacing={3}
+        direction="row"
+        justifyContent="flex-end"
+        sx={{
+          mt: "5px",
+          mb: "5px",
+        }}
+      >
+        <Grid item>
+          <Typography
+            variant="h5"
+            noWrap
+            textAlign="right"
+            sx={{
+              mb: "5px",
+            }}
+          >
+            {user.name}
+          </Typography>
+          <Button
+            variant="contained"
+            color="error"
+            onClick={() => {
+              localStorage.clear();
+              navigate("/signin");
+              window.location.reload();
+            }}
+          >
+            Logout
+          </Button>
+        </Grid>
+        <Grid
+          item
+          sx={{
+            mr: "50px",
+          }}
+        >
+          <img src={Icon} alt="icon" style={{ width: "75px" }} />
+        </Grid>
+      </Grid>
+    </AppBar>
+  );
 
   return (
     <>
       {token && user ? (
-        <Container
-          sx={{
-            mt: "2rem",
-          }}
-        >
-          <form onSubmit={onSubmit}>
-            {component}
-            <Stack direction="row" spacing={2} justifyContent="flex-end">
-              {pages > 1 && (
-                <Button
-                  type="button"
-                  onClick={() => setPages(pages - 1)}
-                  variant="contained"
-                  color="primary"
-                  style={{ margin: "10px" }}
-                >
-                  Back
-                </Button>
-              )}
-              {pages < 10 && (
-                <Button
-                  type="button"
-                  variant="contained"
-                  color="primary"
-                  onClick={() => setPages(pages + 1)}
-                  style={{ margin: "10px" }}
-                >
-                  Next
-                </Button>
-              )}
-              {pages === 10 && (
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  style={{ margin: "10px" }}
-                >
-                  Save and Submit
-                </Button>
-              )}
-            </Stack>
-          </form>
-        </Container>
+        <>
+          {appBar}
+          <Container>
+            <form onSubmit={onSubmit}>
+              {component}
+              <Stack direction="row" spacing={2} justifyContent="flex-end">
+                {pages > 1 && (
+                  <Button
+                    type="button"
+                    onClick={() => setPages(pages - 1)}
+                    variant="contained"
+                    color="primary"
+                    style={{ margin: "10px" }}
+                  >
+                    Back
+                  </Button>
+                )}
+                {pages < 10 && (
+                  <Button
+                    type="button"
+                    variant="contained"
+                    color="primary"
+                    onClick={() => setPages(pages + 1)}
+                    style={{ margin: "10px" }}
+                  >
+                    Next
+                  </Button>
+                )}
+                {pages === 10 && (
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    style={{ margin: "10px" }}
+                  >
+                    Save and Submit
+                  </Button>
+                )}
+              </Stack>
+            </form>
+          </Container>
+        </>
       ) : null}
     </>
   );

@@ -32,9 +32,12 @@ const Login = () => {
     try {
       const response = await UserService.signinUser(data);
       console.log(response);
+      const now = new Date();
       if (response.data.success) {
         localStorage.setItem("token", response.data.data.token);
         localStorage.setItem("user", JSON.stringify(response.data.data.user));
+        localStorage.setItem("expiration", now.getTime() + 3600000);
+        // console.log(now.getTime());
         navigate("/regist");
         window.location.reload();
       } else {

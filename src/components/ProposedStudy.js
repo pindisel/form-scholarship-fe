@@ -45,14 +45,14 @@ const ProposedStudy = ({ onChange, value }) => {
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <FormLabel required>Level of Study</FormLabel>
+          <FormLabel required>Degree</FormLabel>
         </Grid>
         <Grid item xs={9}>
           <RadioGroup
             row
-            name="study_level"
+            name="degree"
             onChange={handleChange}
-            value={value.study_level || ""}
+            value={value.degree || ""}
           >
             <FormControlLabel
               value="master"
@@ -69,14 +69,14 @@ const ProposedStudy = ({ onChange, value }) => {
       </Grid>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <FormLabel required>Course Title</FormLabel>
+          <FormLabel required>Study Program</FormLabel>
         </Grid>
         <Grid item xs={9}>
           <Select
             fullWidth
             onChange={handleChange}
-            name="course_title"
-            value={value.course_title || ""}
+            name="study_program"
+            value={value.study_program || ""}
           >
             {courses.map((option) => (
               <MenuItem value={option.value} key={option.value}>
