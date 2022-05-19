@@ -10,6 +10,7 @@ import {
   RefereeDetails,
   ApplicantsDeclaration,
   DocumentUpload,
+  Appbar,
 } from "../components";
 import { PersonalService } from "../services/personal.service";
 import { ContactService } from "../services/contact.service";
@@ -20,21 +21,9 @@ import { LanguageService } from "../services/language.service";
 import { JobService } from "../services/job.service";
 import { RefereeService } from "../services/referee.service";
 import { DocumentService } from "../services/document.service";
-import {
-  Container,
-  Button,
-  Stack,
-  AppBar,
-  Typography,
-  Grid,
-} from "@mui/material";
-import Logo from "../assets/images/Logo.png";
-import Icon from "../assets/icons/icon.svg";
-import { useNavigate } from "react-router-dom";
+import { Container, Button, Stack } from "@mui/material";
 
 const StudentRegist = () => {
-  const navigate = useNavigate();
-
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -47,6 +36,8 @@ const StudentRegist = () => {
     formData.append("files", document7);
     formData.append("files", document8);
     formData.append("files", document9);
+    formData.append("files", document10);
+    formData.append("files", document11);
 
     var fields = [
       personal,
@@ -106,6 +97,8 @@ const StudentRegist = () => {
   const [document7, setDocument7] = useState(null);
   const [document8, setDocument8] = useState(null);
   const [document9, setDocument9] = useState(null);
+  const [document10, setDocument10] = useState(null);
+  const [document11, setDocument11] = useState(null);
   const [pages, setPages] = useState(1);
   let component = null;
 
@@ -139,6 +132,8 @@ const StudentRegist = () => {
         setDocument7={setDocument7}
         setDocument8={setDocument8}
         setDocument9={setDocument9}
+        setDocument10={setDocument10}
+        setDocument11={setDocument11}
       />
     );
   } else if (pages === 10) {
@@ -148,73 +143,11 @@ const StudentRegist = () => {
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
 
-  const appBar = (
-    <AppBar position="static" color="transparent" elevation={0}>
-      <Stack
-        spacing={2}
-        alignItems="flex-end"
-        justifyContent="center"
-        style={{
-          paddingTop: "10px",
-          paddingBottom: "10px",
-          paddingRight: "50px",
-        }}
-        sx={{
-          backgroundColor: "blue.main",
-        }}
-      >
-        <img src={Logo} alt="logo" style={{ width: "200px" }} />
-      </Stack>
-      <Grid
-        container
-        spacing={3}
-        direction="row"
-        justifyContent="flex-end"
-        sx={{
-          mt: "5px",
-          mb: "5px",
-        }}
-      >
-        <Grid item>
-          <Typography
-            variant="h5"
-            noWrap
-            textAlign="right"
-            sx={{
-              mb: "5px",
-            }}
-          >
-            {user.name}
-          </Typography>
-          <Button
-            variant="contained"
-            color="error"
-            onClick={() => {
-              localStorage.clear();
-              navigate("/signin");
-              window.location.reload();
-            }}
-          >
-            Logout
-          </Button>
-        </Grid>
-        <Grid
-          item
-          sx={{
-            mr: "50px",
-          }}
-        >
-          <img src={Icon} alt="icon" style={{ width: "75px" }} />
-        </Grid>
-      </Grid>
-    </AppBar>
-  );
-
   return (
     <>
       {token && user ? (
         <>
-          {appBar}
+          <Appbar />
           <Container>
             <form onSubmit={onSubmit}>
               {component}

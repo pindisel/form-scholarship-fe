@@ -23,18 +23,18 @@ const ApplicantsDeclaration = () => {
       />
       <Typography variant="body1" gutterBottom>
         I understand and confirm that:
-        <br />• I have read and complied with the IIIU Admission Guidelines and
+        <br />• I have read and complied with the UIII Admission Guidelines and
         that the contents of my application are true and correct.
-        <br />• I authorize IIIU to make enquiries and to obtain official
+        <br />• I authorize UIII to make enquiries and to obtain official
         records from any university and tertiary educational institution
         concerning my current or previous attendance which, in its absolute
         discretion, it believes are necessary.
-        <br />• IIIU has the right to vary or cancel any made on the basis of
-        incorrect or incomplete information provided by me or by my referees.
-        <br />• Decisions of the admission panel are final and confidential and
-        no correspondence about outcomes of the selection process will be
-        entered into.
-        <br />• All documents submitted become the property of IIIU and will not
+        <br />• UIII has the right to vary or cancel any incorrect or incomplete
+        information, made on the basis provided by me or by my referees.
+        <br />• Decisions of the admissions committee are final and confidential
+        and no correspondence about outcomes of the admission process will be
+        entered to
+        <br />• All documents submitted become the property of UIII and will not
         be returned.
       </Typography>
       <FormControlLabel
@@ -50,14 +50,15 @@ const ApplicantsDeclaration = () => {
         label={<Typography variant="h6">Agreement</Typography>}
       />
       <Typography variant="body1" gutterBottom>
-        If successful in gaining IIIU Admission, I agree that I will:
-        <br />• Immediately provide IIIU with details of any incident that may
-        reflect badly on the prestige of IIIU.
+        If successful in being accepted by the UIII Admissions, I agree that I
+        will:
+        <br />• Immediately provide UIII with details of any incident that may
+        reflect badly on the prestige of UIII.
         <br />• Not hold another equivalent award or scholarship at the same
-        time, if I will be granted IIIU related scholarship.
-        <br />• Act in a manner befitting a recipient of IIIU Admission.
-        <br />• Acknowledge the assistance given by IIIU in any written report,
-        publications or publicity associated with IIIU.
+        time, if I will be granted UIII related scholarship.
+        <br />• Act in a manner befitting a recipient of UIII Admission.
+        <br />• Acknowledge the assistance given by UIII in any written report,
+        publications or publicity associated with UIII.
       </Typography>
       <Typography variant="h6" gutterBottom>
         Declaration and acknowledgement

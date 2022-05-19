@@ -49,11 +49,6 @@ const FinancialSupport = ({ onChange, value }) => {
               control={<Radio required />}
               label="LDPD - IIIU Admission for Doctor Program"
             />
-            <FormControlLabel
-              value="baznas"
-              control={<Radio required />}
-              label="BAZNAS - IIIU Admission for Doctor Program"
-            />
           </Stack>
         </RadioGroup>
       </Container>

@@ -8,3 +8,4 @@ export { default as JobStatus } from "./JobStatus";
 export { default as RefereeDetails } from "./RefereeDetails";
 export { default as ApplicantsDeclaration } from "./ApplicantsDeclaration";
 export { default as DocumentUpload } from "./DocumentUpload";
+export { default as Appbar } from "./Appbar";

@@ -44,10 +44,15 @@ const Signup = () => {
       } else {
         const response = await UserService.createUser(data);
         console.log(response);
-        navigate("/signin");
-        alert("Berhasil Registrasi");
+        if (response.data.success) {
+          navigate("/signin");
+          alert("Sign Up Successful");
+        } else {
+          throw new Error(response.data.message);
+        }
       }
     } catch (error) {
+      console.log(error);
       alert(error.message);
     }
   };
@@ -98,6 +103,7 @@ const Signup = () => {
                 borderRadius: "5px",
               }}
               value={nama || ""}
+              required
             />
             <Typography
               variant="h5"
@@ -122,6 +128,7 @@ const Signup = () => {
                 borderRadius: "5px",
               }}
               value={email || ""}
+              required
             />
             <Typography
               variant="h5"
@@ -155,6 +162,7 @@ const Signup = () => {
                 borderRadius: "5px",
               }}
               value={password || ""}
+              required
             />
             <Button
               variant="contained"

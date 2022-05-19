@@ -8,7 +8,8 @@ import { LanguageService } from "../services/language.service";
 import { JobService } from "../services/job.service";
 import { RefereeService } from "../services/referee.service";
 import { DocumentService } from "../services/document.service";
-import { Container, Stack, Typography } from "@mui/material";
+import { Container, Stack, Typography, List } from "@mui/material";
+import { Appbar } from "../components";
 
 const GetDetails = () => {
   const [personal, setPersonal] = useState([]);
@@ -20,53 +21,86 @@ const GetDetails = () => {
   const [job, setJob] = useState([]);
   const [referee, setReferee] = useState([]);
   const [document, setDocument] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const user = JSON.parse(localStorage.getItem("user"));
+  const userId = user.id_user - 1;
 
   useEffect(() => {
     const fetchData = async () => {
-      setPersonal(await (await PersonalService.getPersonal()).data);
-      setContact(await (await ContactService.getContact()).data);
-      setFinance(await (await FinanceService.getFinance()).data);
-      setStudy(await (await StudyService.getStudy()).data);
-      setEducation(await (await EducationService.getEducation()).data);
-      setLanguage(await (await LanguageService.getLanguage()).data);
-      setJob(await (await JobService.getJob()).data);
-      setReferee(await (await RefereeService.getReferee()).data);
-      setDocument(await (await DocumentService.getDocument()).data);
+      setPersonal(
+        await (
+          await PersonalService.getPersonal()
+        ).data.data[userId]
+      );
+      setContact(await (await ContactService.getContact()).data.data[userId]);
+      setFinance(await (await FinanceService.getFinance()).data.data[userId]);
+      setStudy(await (await StudyService.getStudy()).data.data[userId]);
+      setEducation(
+        await (
+          await EducationService.getEducation()
+        ).data.data[userId]
+      );
+      setLanguage(
+        await (
+          await LanguageService.getLanguage()
+        ).data.data[userId]
+      );
+      setJob(await (await JobService.getJob()).data.data[userId]);
+      setReferee(await (await RefereeService.getReferee()).data.data[userId]);
+      setDocument(
+        await (
+          await DocumentService.getDocument()
+        ).data.data[userId]
+      );
     };
-    // console.log(
-    //   personal
-    //   // contact,
-    //   // finance,
-    //   // study,
-    //   // education,
-    //   // language,
-    //   // job,
-    //   // referee,
-    //   // document
-    // );
-    fetchData();
-  }, []);
+
+    fetchData().then(() => setLoading(false));
+  }, [userId]);
+  console.log(
+    personal,
+    contact,
+    finance,
+    study,
+    education,
+    language,
+    job,
+    referee,
+    document
+  );
 
   return (
     <>
-      {personal.data.length > 0 &&
-      contact.data.length > 0 &&
-      finance.data.length > 0 &&
-      study.data.length > 0 &&
-      education.data.length > 0 &&
-      language.data.length > 0 &&
-      job.data.length > 0 &&
-      referee.data.length > 0 &&
-      document.data.length > 0 ? (
-        <Container>
-          <Stack>
-            <Typography variant="h5" gutterBottom>
-              A. Personal Details
-            </Typography>
-          </Stack>
-        </Container>
+      <Appbar />
+      {loading ? (
+        <Typography variant="h4">Loading...</Typography>
       ) : (
-        <Container>Empty Data</Container>
+        <Container>
+          <Typography variant="h5" gutterBottom>
+            A. Personal Details
+          </Typography>
+          <List
+            sx={{
+              width: "60%",
+            }}
+          >
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              <Typography variant="h6">1. First Name:</Typography>
+              <Typography variant="h6">{personal.f_name}</Typography>
+            </Stack>
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              <Typography variant="h6">1. Last Name:</Typography>
+              <Typography variant="h6">{personal.l_name}</Typography>
+            </Stack>
+          </List>
+        </Container>
       )}
     </>
   );

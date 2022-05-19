@@ -11,6 +11,8 @@ const DocumentUpload = ({
   setDocument7,
   setDocument8,
   setDocument9,
+  setDocument10,
+  setDocument11,
 }) => {
   return (
     <>
@@ -179,7 +181,7 @@ const DocumentUpload = ({
           alignItems="center"
           justifyContent="space-between"
         >
-          <Typography variant="body1">9.Receipt of Admission Fee:</Typography>
+          <Typography variant="body1">9. Receipt of Admission Fee:</Typography>
           <Input
             type="file"
             name="files"
@@ -190,6 +192,42 @@ const DocumentUpload = ({
               accept: ".pdf",
             }}
             onChange={(e) => setDocument9(e.target.files[0])}
+          />
+        </Stack>
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Typography variant="body1">10. Publication:</Typography>
+          <Input
+            type="file"
+            name="files"
+            id="file"
+            variant="outlined"
+            required
+            inputProps={{
+              accept: ".pdf",
+            }}
+            onChange={(e) => setDocument10(e.target.files[0])}
+          />
+        </Stack>
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Typography variant="body1">11. Other:</Typography>
+          <Input
+            type="file"
+            name="files"
+            id="file"
+            variant="outlined"
+            required
+            inputProps={{
+              accept: ".pdf",
+            }}
+            onChange={(e) => setDocument11(e.target.files[0])}
           />
         </Stack>
       </List>

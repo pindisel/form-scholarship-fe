@@ -5,7 +5,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import { StudentRegist, Login, Signup, GetDetails } from "./pages";
+import { StudentRegist, Login, Signup, GetDetails, RefereeForm } from "./pages";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -43,9 +43,7 @@ function App() {
                 element={<Navigate to="/regist" replace />}
               />
               <Route exact path="/regist" element={<StudentRegist />} />
-              {user.role === "admin" ? (
-                <Route exact path="/details" element={<GetDetails />} />
-              ) : null}
+              <Route exact path="/details" element={<GetDetails />} />
             </Routes>
           ) : (
             <Routes>
@@ -54,6 +52,7 @@ function App() {
                 path="/*"
                 element={<Navigate to="/signin" replace />}
               />
+              <Route exact path="/referee/:id" element={<RefereeForm />} />
               <Route exact path="/signin" element={<Login />} />
               <Route exact path="/signup" element={<Signup />} />
             </Routes>
