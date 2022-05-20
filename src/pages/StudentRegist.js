@@ -157,7 +157,7 @@ const StudentRegist = () => {
                     Next
                   </Button>
                 )}
-                {pages === 8 && (
+                {pages === 10 && (
                   <Button
                     type="submit"
                     variant="contained"
