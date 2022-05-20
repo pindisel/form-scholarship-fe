@@ -64,10 +64,7 @@ function App() {
               />
               <Route exact path="/signin" element={<Login />} />
               <Route exact path="/signup" element={<Signup />} />
-              <Route
-                path="/referee/:id_user/:id_ref"
-                element={<RefereeForm />}
-              />
+              <Route path="/referee" element={<RefereeForm />} />
             </Routes>
           )}
         </Router>
