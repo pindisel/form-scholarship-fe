@@ -68,10 +68,10 @@ const RefereeForm = () => {
         ).data.data
       );
       setStudy(await (await StudyService.getStudyById(id_user)).data.data);
-      if (id_ref == 1) {
+      if (id_ref === 1) {
         var response = await RefereeFormService.getRef1ById(id_user);
-      } else if (id_ref == 2) {
-        var response = await RefereeFormService.getRef2ById(id_user);
+      } else if (id_ref === 2) {
+        response = await RefereeFormService.getRef2ById(id_user);
       }
       if (response.data.data) {
         navigate("/");
@@ -80,15 +80,15 @@ const RefereeForm = () => {
     };
 
     fetchData();
-  }, [id_user, id_ref]);
+  }, [id_user, id_ref, navigate]);
   // console.log(refereeForm);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (id_ref == 1) {
+      if (id_ref === 1) {
         await RefereeFormService.createRef1(refereeForm);
-      } else if (id_ref == 2) {
+      } else if (id_ref === 2) {
         await RefereeFormService.createRef2(refereeForm);
       }
       alert("Data successfully submitted");
@@ -102,7 +102,7 @@ const RefereeForm = () => {
 
   return (
     <>
-      {(id_ref == 1 || id_ref == 2) && personal ? (
+      {(id_ref === 1 || id_ref === 2) && personal ? (
         <>
           <Appbar />
           <Container>
