@@ -6,6 +6,12 @@ async function getLanguage() {
   return response;
 }
 
+async function getLanguageById(id) {
+  const body = {};
+  const response = await gatewayHelper.http("GET", `language/${id}`, body);
+  return response;
+}
+
 async function createLanguage(data) {
   const body = {};
   const response = await gatewayHelper.http("POST", "language", body, data);
@@ -15,4 +21,5 @@ async function createLanguage(data) {
 export const LanguageService = {
   getLanguage,
   createLanguage,
+  getLanguageById,
 };

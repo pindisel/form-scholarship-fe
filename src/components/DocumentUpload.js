@@ -21,7 +21,9 @@ const DocumentUpload = ({
       </Typography>
       <List
         sx={{
-          width: "60%",
+          width: "100%",
+          marginLeft: "auto",
+          marginRight: "auto",
         }}
       >
         <Stack

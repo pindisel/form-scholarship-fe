@@ -6,6 +6,12 @@ async function getEducation() {
   return response;
 }
 
+async function getEducationById(id) {
+  const body = {};
+  const response = await gatewayHelper.http("GET", `education/${id}`, body);
+  return response;
+}
+
 async function createEducation(data) {
   const body = {};
   const response = await gatewayHelper.http("POST", "education", body, data);
@@ -15,4 +21,5 @@ async function createEducation(data) {
 export const EducationService = {
   getEducation,
   createEducation,
+  getEducationById,
 };

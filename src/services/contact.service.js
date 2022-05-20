@@ -6,6 +6,12 @@ async function getContact() {
   return response;
 }
 
+async function getContactById(id) {
+  const body = {};
+  const response = await gatewayHelper.http("GET", `contact/${id}`, body);
+  return response;
+}
+
 async function createContact(data) {
   const body = {};
   const response = await gatewayHelper.http("POST", "contact", body, data);
@@ -15,4 +21,5 @@ async function createContact(data) {
 export const ContactService = {
   getContact,
   createContact,
+  getContactById,
 };

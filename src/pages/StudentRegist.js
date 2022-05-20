@@ -24,9 +24,14 @@ import { DocumentService } from "../services/document.service";
 import { Container, Button, Stack } from "@mui/material";
 
 const StudentRegist = () => {
+  const token = sessionStorage.getItem("token");
+  const user = JSON.parse(sessionStorage.getItem("user"));
+  const userId = user.id_user;
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
+    formData.append("id_user", userId);
     formData.append("files", document1);
     formData.append("files", document2);
     formData.append("files", document3);
@@ -38,31 +43,6 @@ const StudentRegist = () => {
     formData.append("files", document9);
     formData.append("files", document10);
     formData.append("files", document11);
-
-    var fields = [
-      personal,
-      contact,
-      finance,
-      study,
-      education,
-      language,
-      job,
-      referee,
-    ];
-    var data = {};
-    fields.forEach((field) => {
-      data = { ...data, [field]: personal[field] };
-    });
-    // if (data.country === undefined) {
-    //   alert("Please select your country");
-    // }
-
-    // var size = Object.keys(personal);
-    // var data = {};
-    // size.forEach((element) => {
-    //   data = { ...data, [element]: personal[element] };
-    // });
-    // console.log(data);
 
     try {
       await PersonalService.createPersonal(personal);
@@ -80,14 +60,20 @@ const StudentRegist = () => {
     }
   };
 
-  const [personal, setPersonal] = useState({});
-  const [contact, setContact] = useState({});
-  const [finance, setFinance] = useState({});
-  const [study, setStudy] = useState({});
-  const [education, setEducation] = useState({});
-  const [language, setLanguage] = useState({});
-  const [job, setJob] = useState({});
-  const [referee, setReferee] = useState({});
+  const [personal, setPersonal] = useState({
+    id_user: userId,
+  });
+  const [contact, setContact] = useState({
+    id_user: userId,
+  });
+  const [finance, setFinance] = useState({
+    id_user: userId,
+  });
+  const [study, setStudy] = useState({ id_user: userId });
+  const [education, setEducation] = useState({ id_user: userId });
+  const [language, setLanguage] = useState({ id_user: userId });
+  const [job, setJob] = useState({ id_user: userId });
+  const [referee, setReferee] = useState({ id_user: userId });
   const [document1, setDocument1] = useState(null);
   const [document2, setDocument2] = useState(null);
   const [document3, setDocument3] = useState(null);
@@ -140,9 +126,6 @@ const StudentRegist = () => {
     component = <ApplicantsDeclaration />;
   }
 
-  const token = localStorage.getItem("token");
-  const user = JSON.parse(localStorage.getItem("user"));
-
   return (
     <>
       {token && user ? (
@@ -174,7 +157,7 @@ const StudentRegist = () => {
                     Next
                   </Button>
                 )}
-                {pages === 10 && (
+                {pages === 8 && (
                   <Button
                     type="submit"
                     variant="contained"

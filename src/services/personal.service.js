@@ -6,6 +6,12 @@ async function getPersonal() {
   return response;
 }
 
+async function getPersonalById(id) {
+  const body = {};
+  const response = await gatewayHelper.http("GET", `personal/${id}`, body);
+  return response;
+}
+
 async function createPersonal(data) {
   const body = {};
   const response = await gatewayHelper.http("POST", "personal", body, data);
@@ -15,4 +21,5 @@ async function createPersonal(data) {
 export const PersonalService = {
   getPersonal,
   createPersonal,
+  getPersonalById,
 };

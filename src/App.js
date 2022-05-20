@@ -25,26 +25,36 @@ const theme = createTheme({
 });
 
 function App() {
-  const token = localStorage.getItem("token");
-  const user = JSON.parse(localStorage.getItem("user"));
-  const expiration = localStorage.getItem("expiration");
-  const now = new Date();
-  // console.log(now.getTime() + " " + expiration);
-  // console.log(user.role);
+  const token = sessionStorage.getItem("token");
+  const user = JSON.parse(sessionStorage.getItem("user"));
+
   return (
     <>
       <ThemeProvider theme={theme}>
         <Router>
-          {token && user && now.getTime() < expiration ? (
-            <Routes>
-              <Route
-                exact
-                path="/*"
-                element={<Navigate to="/regist" replace />}
-              />
-              <Route exact path="/regist" element={<StudentRegist />} />
-              <Route exact path="/details" element={<GetDetails />} />
-            </Routes>
+          {token && user ? (
+            <>
+              {user.role === "admin" ? (
+                <Routes>
+                  <Route path="/" element={<Navigate to="/details" />} />
+                  <Route path="/details" element={<GetDetails />} />
+                  <Route
+                    path="/referee/:id_user/:id_ref"
+                    element={<RefereeForm />}
+                  />
+                </Routes>
+              ) : (
+                <Routes>
+                  <Route
+                    exact
+                    path="/*"
+                    element={<Navigate to="/regist" replace />}
+                  />
+                  <Route exact path="/regist" element={<StudentRegist />} />
+                  <Route exact path="/details" element={<GetDetails />} />
+                </Routes>
+              )}
+            </>
           ) : (
             <Routes>
               <Route
@@ -52,9 +62,12 @@ function App() {
                 path="/*"
                 element={<Navigate to="/signin" replace />}
               />
-              <Route exact path="/referee/:id" element={<RefereeForm />} />
               <Route exact path="/signin" element={<Login />} />
               <Route exact path="/signup" element={<Signup />} />
+              <Route
+                path="/referee/:id_user/:id_ref"
+                element={<RefereeForm />}
+              />
             </Routes>
           )}
         </Router>

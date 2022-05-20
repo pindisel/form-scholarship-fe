@@ -6,6 +6,12 @@ async function getJob() {
   return response;
 }
 
+async function getJobById(id) {
+  const body = {};
+  const response = await gatewayHelper.http("GET", `job/${id}`, body);
+  return response;
+}
+
 async function createJob(data) {
   const body = {};
   const response = await gatewayHelper.http("POST", "job", body, data);
@@ -15,4 +21,5 @@ async function createJob(data) {
 export const JobService = {
   getJob,
   createJob,
+  getJobById,
 };

@@ -6,6 +6,12 @@ async function getStudy() {
   return response;
 }
 
+async function getStudyById(id) {
+  const body = {};
+  const response = await gatewayHelper.http("GET", `study/${id}`, body);
+  return response;
+}
+
 async function createStudy(data) {
   const body = {};
   const response = await gatewayHelper.http("POST", "study", body, data);
@@ -15,4 +21,5 @@ async function createStudy(data) {
 export const StudyService = {
   getStudy,
   createStudy,
+  getStudyById,
 };

@@ -6,6 +6,12 @@ async function getDocument() {
   return response;
 }
 
+async function getDocumentById(id) {
+  const body = {};
+  const response = await gatewayHelper.http("GET", `document/${id}`, body);
+  return response;
+}
+
 async function createDocument(data) {
   const body = {};
   const response = await gatewayHelper.http("POST", "document", body, data);
@@ -15,4 +21,5 @@ async function createDocument(data) {
 export const DocumentService = {
   getDocument,
   createDocument,
+  getDocumentById,
 };

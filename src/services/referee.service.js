@@ -6,6 +6,12 @@ async function getReferee() {
   return response;
 }
 
+async function getRefereeById(id) {
+  const body = {};
+  const response = await gatewayHelper.http("GET", `referee/${id}`, body);
+  return response;
+}
+
 async function createReferee(data) {
   const body = {};
   const response = await gatewayHelper.http("POST", "referee", body, data);
@@ -15,4 +21,5 @@ async function createReferee(data) {
 export const RefereeService = {
   getReferee,
   createReferee,
+  getRefereeById,
 };
