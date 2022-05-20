@@ -493,7 +493,7 @@ const RefereeForm = () => {
           </Container>
         </>
       ) : (
-        navigate("/").then(() => window.location.reload())
+        <>asadadas</>
       )}
     </>
   );
