@@ -22,8 +22,10 @@ import { JobService } from "../services/job.service";
 import { RefereeService } from "../services/referee.service";
 import { DocumentService } from "../services/document.service";
 import { Container, Button, Stack } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const StudentRegist = () => {
+  const navigate = useNavigate();
   const token = sessionStorage.getItem("token");
   const user = JSON.parse(sessionStorage.getItem("user"));
   const userId = user.id_user;
@@ -55,6 +57,7 @@ const StudentRegist = () => {
       await RefereeService.createReferee(referee);
       await DocumentService.createDocument(formData);
       alert("Successfully submitted");
+      navigate("/details");
     } catch (error) {
       console.log(error);
     }
