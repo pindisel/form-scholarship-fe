@@ -6,6 +6,12 @@ async function getUser() {
   return response;
 }
 
+async function getUserById(id) {
+  const body = {};
+  const response = await gatewayHelper.http("GET", `user/${id}`, body);
+  return response;
+}
+
 async function createUser(data) {
   const body = {};
   const response = await gatewayHelper.http("POST", "user/signup", body, data);
@@ -20,6 +26,7 @@ async function signinUser(data) {
 
 export const UserService = {
   getUser,
+  getUserById,
   createUser,
   signinUser,
 };

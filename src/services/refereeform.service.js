@@ -12,34 +12,21 @@ async function getRef2() {
   return response;
 }
 
-async function getRef1ById(id) {
-  const body = {};
-  const response = await gatewayHelper.http("GET", `refereeform/1/${id}`, body);
-  return response;
-}
-
-async function getRef2ById(id) {
-  const body = {};
-  const response = await gatewayHelper.http("GET", `refereeform/2/${id}`, body);
-  return response;
-}
-
-async function createRef1(data) {
+async function getRefById(id_ref, id_user) {
   const body = {};
   const response = await gatewayHelper.http(
-    "POST",
-    "refereeform/1",
-    body,
-    data
+    "GET",
+    `refereeform/${id_ref}/${id_user}`,
+    body
   );
   return response;
 }
 
-async function createRef2(data) {
+async function createRef(id_ref, data) {
   const body = {};
   const response = await gatewayHelper.http(
     "POST",
-    "refereeform/2",
+    `refereeform/${id_ref}`,
     body,
     data
   );
@@ -49,8 +36,6 @@ async function createRef2(data) {
 export const RefereeFormService = {
   getRef1,
   getRef2,
-  getRef1ById,
-  getRef2ById,
-  createRef1,
-  createRef2,
+  getRefById,
+  createRef,
 };
