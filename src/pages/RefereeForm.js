@@ -46,13 +46,13 @@ const RefereeForm = () => {
   const params = Object.fromEntries([...searchParams]);
   const id_user = params.id_user;
   const id_ref = params.id_ref;
-  const [personal, setPersonal] = useState(null);
-  const [referee, setReferee] = useState(null);
-  const [study, setStudy] = useState(null);
+  const [personal, setPersonal] = useState([]);
+  const [referee, setReferee] = useState([]);
+  const [study, setStudy] = useState([]);
+  const [response, setResponse] = useState([]);
   const [refereeForm, setRefereeForm] = useState({
     id_user: id_user,
   });
-  const [response, setResponse] = useState(null);
 
   const handleChange = (e) => {
     setRefereeForm({ ...refereeForm, [e.target.name]: e.target.value });
@@ -98,8 +98,8 @@ const RefereeForm = () => {
   return (
     <>
       {(id_ref === "1" || id_ref === "2") &&
-      response === null &&
-      referee !== null ? (
+      response.length === 0 &&
+      referee.length !== 0 ? (
         <>
           <Appbar />
           <Container>
