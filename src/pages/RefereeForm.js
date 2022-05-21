@@ -77,9 +77,15 @@ const RefereeForm = () => {
         ).data.data
       );
     };
+    if (personal === null || referee === null || study === null) {
+      return navigate("/");
+    }
 
+    if ((id_ref !== "1" || id_ref !== "2") && response !== null) {
+      return navigate("/");
+    }
     fetchData();
-  }, [id_user, id_ref, navigate]);
+  }, [id_user, id_ref, navigate, personal, response, referee, study]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -97,23 +103,71 @@ const RefereeForm = () => {
 
   return (
     <>
-      {(id_ref === "1" || id_ref === "2") &&
-      response.length === 0 &&
-      referee.length !== 0 ? (
-        <>
-          <Appbar />
-          <Container>
-            <form onSubmit={onSubmit}>
-              <Typography variant="h5" gutterBottom textAlign="center">
-                Letter of Recommendation Form
+      <Appbar />
+      <Container>
+        <form onSubmit={onSubmit}>
+          <Typography variant="h5" gutterBottom textAlign="center">
+            Letter of Recommendation Form
+          </Typography>
+          <Typography variant="h6">A. Applicant Data</Typography>
+          <List
+            sx={{
+              width: "60%",
+              // marginRight: "auto",
+            }}
+          >
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+              spacing={24}
+              sx={{
+                m: 1,
+              }}
+            >
+              <Typography variant="body1">1. Name of Applicant:</Typography>
+              <Typography variant="body1" textAlign="left">
+                {personal.f_name} {personal.l_name}
               </Typography>
-              <Typography variant="h6">A. Applicant Data</Typography>
-              <List
-                sx={{
-                  width: "60%",
-                  // marginRight: "auto",
-                }}
-              >
+            </Stack>
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+              spacing={24}
+              sx={{
+                m: 1,
+              }}
+            >
+              <Typography variant="body1">
+                2. ID Number / Passport No.:
+              </Typography>
+              <Typography variant="body1">
+                {personal.national_num} / {personal.passport_num}
+              </Typography>
+            </Stack>
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+              spacing={24}
+              sx={{
+                m: 1,
+              }}
+            >
+              <Typography variant="body1">3. Study Program:</Typography>
+              <Typography variant="body1">{study.study_program}</Typography>
+            </Stack>
+          </List>
+          <Typography variant="h6">B. Referee Data</Typography>
+          <List
+            sx={{
+              width: "60%",
+              marginRight: "auto",
+            }}
+          >
+            {id_ref === "1" ? (
+              <>
                 <Stack
                   direction="row"
                   alignItems="center"
@@ -123,25 +177,9 @@ const RefereeForm = () => {
                     m: 1,
                   }}
                 >
-                  <Typography variant="body1">1. Name of Applicant:</Typography>
-                  <Typography variant="body1" textAlign="left">
-                    {personal.f_name} {personal.l_name}
-                  </Typography>
-                </Stack>
-                <Stack
-                  direction="row"
-                  alignItems="center"
-                  justifyContent="space-between"
-                  spacing={24}
-                  sx={{
-                    m: 1,
-                  }}
-                >
+                  <Typography variant="body1">1. Name:</Typography>
                   <Typography variant="body1">
-                    2. ID Number / Passport No.:
-                  </Typography>
-                  <Typography variant="body1">
-                    {personal.national_num} / {personal.passport_num}
+                    {referee.f_name_ref1} {referee.l_name_ref1}
                   </Typography>
                 </Stack>
                 <Stack
@@ -153,117 +191,12 @@ const RefereeForm = () => {
                     m: 1,
                   }}
                 >
-                  <Typography variant="body1">3. Study Program:</Typography>
-                  <Typography variant="body1">{study.study_program}</Typography>
+                  <Typography variant="body1">2. Position:</Typography>
+                  <Typography variant="body1">
+                    {referee.position_ref1}
+                  </Typography>
                 </Stack>
-              </List>
-              <Typography variant="h6">B. Referee Data</Typography>
-              <List
-                sx={{
-                  width: "60%",
-                  marginRight: "auto",
-                }}
-              >
-                {id_ref === "1" ? (
-                  <>
-                    <Stack
-                      direction="row"
-                      alignItems="center"
-                      justifyContent="space-between"
-                      spacing={24}
-                      sx={{
-                        m: 1,
-                      }}
-                    >
-                      <Typography variant="body1">1. Name:</Typography>
-                      <Typography variant="body1">
-                        {referee.f_name_ref1} {referee.l_name_ref1}
-                      </Typography>
-                    </Stack>
-                    <Stack
-                      direction="row"
-                      alignItems="center"
-                      justifyContent="space-between"
-                      spacing={24}
-                      sx={{
-                        m: 1,
-                      }}
-                    >
-                      <Typography variant="body1">2. Position:</Typography>
-                      <Typography variant="body1">
-                        {referee.position_ref1}
-                      </Typography>
-                    </Stack>
 
-                    <Stack
-                      direction="row"
-                      alignItems="center"
-                      justifyContent="space-between"
-                      spacing={24}
-                      sx={{
-                        m: 1,
-                      }}
-                    >
-                      <Typography variant="body1">3. Institution:</Typography>
-                      <Typography variant="body1">
-                        {referee.institution_ref1}
-                      </Typography>
-                    </Stack>
-                  </>
-                ) : (
-                  <>
-                    <Stack
-                      direction="row"
-                      alignItems="center"
-                      justifyContent="space-between"
-                      spacing={24}
-                      sx={{
-                        m: 1,
-                      }}
-                    >
-                      <Typography variant="body1">1. Name:</Typography>
-                      <Typography variant="body1">
-                        {referee.f_name_ref2} {referee.l_name_ref2}
-                      </Typography>
-                    </Stack>
-                    <Stack
-                      direction="row"
-                      alignItems="center"
-                      justifyContent="space-between"
-                      spacing={24}
-                      sx={{
-                        m: 1,
-                      }}
-                    >
-                      <Typography variant="body1">2. Position:</Typography>
-                      <Typography variant="body1">
-                        {referee.position_ref2}
-                      </Typography>
-                    </Stack>
-                    <Stack
-                      direction="row"
-                      alignItems="center"
-                      justifyContent="space-between"
-                      spacing={24}
-                      sx={{
-                        m: 1,
-                      }}
-                    >
-                      <Typography variant="body1">3. Institution:</Typography>
-                      <Typography variant="body1">
-                        {referee.institution_ref2}
-                      </Typography>
-                    </Stack>
-                  </>
-                )}
-              </List>
-              <Typography variant="h6">C. Competence</Typography>
-              <List
-                sx={{
-                  width: "60%",
-                  marginRight: "auto",
-                }}
-              >
                 <Stack
                   direction="row"
                   alignItems="center"
@@ -273,25 +206,14 @@ const RefereeForm = () => {
                     m: 1,
                   }}
                 >
+                  <Typography variant="body1">3. Institution:</Typography>
                   <Typography variant="body1">
-                    1. Intellectual Ability
+                    {referee.institution_ref1}
                   </Typography>
-                  <FormControl variant="standard" sx={{ m: 1, minWidth: 130 }}>
-                    <InputLabel>Grade</InputLabel>
-                    <Select
-                      name="intelectual_ability"
-                      onChange={handleChange}
-                      value={refereeForm.intelectual_ability || ""}
-                      label="Grade"
-                    >
-                      {grade.map((item) => (
-                        <MenuItem value={item.value} key={item.value}>
-                          <Typography variant="body1">{item.label}</Typography>
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
                 </Stack>
+              </>
+            ) : (
+              <>
                 <Stack
                   direction="row"
                   alignItems="center"
@@ -301,24 +223,10 @@ const RefereeForm = () => {
                     m: 1,
                   }}
                 >
+                  <Typography variant="body1">1. Name:</Typography>
                   <Typography variant="body1">
-                    2. Oral communication Skills
+                    {referee.f_name_ref2} {referee.l_name_ref2}
                   </Typography>
-                  <FormControl variant="standard" sx={{ m: 1, minWidth: 130 }}>
-                    <InputLabel>Grade</InputLabel>
-                    <Select
-                      name="oral_communication"
-                      onChange={handleChange}
-                      value={refereeForm.oral_communication || ""}
-                      label="Grade"
-                    >
-                      {grade.map((item) => (
-                        <MenuItem value={item.value} key={item.value}>
-                          <Typography variant="body1">{item.label}</Typography>
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
                 </Stack>
                 <Stack
                   direction="row"
@@ -329,24 +237,10 @@ const RefereeForm = () => {
                     m: 1,
                   }}
                 >
+                  <Typography variant="body1">2. Position:</Typography>
                   <Typography variant="body1">
-                    3. Written communication Skills
+                    {referee.position_ref2}
                   </Typography>
-                  <FormControl variant="standard" sx={{ m: 1, minWidth: 130 }}>
-                    <InputLabel>Grade</InputLabel>
-                    <Select
-                      name="written_communication"
-                      onChange={handleChange}
-                      value={refereeForm.written_communication || ""}
-                      label="Grade"
-                    >
-                      {grade.map((item) => (
-                        <MenuItem value={item.value} key={item.value}>
-                          <Typography variant="body1">{item.label}</Typography>
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
                 </Stack>
                 <Stack
                   direction="row"
@@ -357,141 +251,243 @@ const RefereeForm = () => {
                     m: 1,
                   }}
                 >
+                  <Typography variant="body1">3. Institution:</Typography>
                   <Typography variant="body1">
-                    4. Ability to work independently
+                    {referee.institution_ref2}
                   </Typography>
-                  <FormControl variant="standard" sx={{ m: 1, minWidth: 130 }}>
-                    <InputLabel>Grade</InputLabel>
-                    <Select
-                      name="independent_work"
-                      onChange={handleChange}
-                      value={refereeForm.independent_work || ""}
-                      label="Grade"
-                    >
-                      {grade.map((item) => (
-                        <MenuItem value={item.value} key={item.value}>
-                          <Typography variant="body1">{item.label}</Typography>
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
                 </Stack>
-                <Stack
-                  direction="row"
-                  alignItems="center"
-                  justifyContent="space-between"
-                  spacing={24}
-                  sx={{
-                    m: 1,
-                  }}
+              </>
+            )}
+          </List>
+          <Typography variant="h6">C. Competence</Typography>
+          <List
+            sx={{
+              width: "60%",
+              marginRight: "auto",
+            }}
+          >
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+              spacing={24}
+              sx={{
+                m: 1,
+              }}
+            >
+              <Typography variant="body1">1. Intellectual Ability</Typography>
+              <FormControl variant="standard" sx={{ m: 1, minWidth: 130 }}>
+                <InputLabel>Grade</InputLabel>
+                <Select
+                  name="intelectual_ability"
+                  onChange={handleChange}
+                  value={refereeForm.intelectual_ability || ""}
+                  label="Grade"
                 >
-                  <Typography variant="body1">
-                    5. Ability to organize workload
-                  </Typography>
-                  <FormControl variant="standard" sx={{ m: 1, minWidth: 130 }}>
-                    <InputLabel>Grade</InputLabel>
-                    <Select
-                      name="organize_work"
-                      onChange={handleChange}
-                      value={refereeForm.organize_work || ""}
-                      label="Grade"
-                    >
-                      {grade.map((item) => (
-                        <MenuItem value={item.value} key={item.value}>
-                          <Typography variant="body1">{item.label}</Typography>
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Stack>
-                <Stack
-                  direction="row"
-                  alignItems="center"
-                  justifyContent="space-between"
-                  spacing={24}
-                  sx={{
-                    m: 1,
-                  }}
-                >
-                  <Typography variant="body1">6. Motivation</Typography>
-                  <FormControl variant="standard" sx={{ m: 1, minWidth: 130 }}>
-                    <InputLabel>Grade</InputLabel>
-                    <Select
-                      name="motivation"
-                      onChange={handleChange}
-                      value={refereeForm.motivation || ""}
-                      label="Grade"
-                    >
-                      {grade.map((item) => (
-                        <MenuItem value={item.value} key={item.value}>
-                          <Typography variant="body1">{item.label}</Typography>
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Stack>
-              </List>
-              <Typography variant="h6">D. Overall Assessment</Typography>
+                  {grade.map((item) => (
+                    <MenuItem value={item.value} key={item.value}>
+                      <Typography variant="body1">{item.label}</Typography>
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Stack>
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+              spacing={24}
+              sx={{
+                m: 1,
+              }}
+            >
               <Typography variant="body1">
-                Please use this box to provide an overall assessment of the
-                applicant. This includes the constuctive review of performance
-                based on your interaction with the applicant. (max. 300 words)
+                2. Oral communication Skills
               </Typography>
-              <TextField
-                multiline
-                fullWidth
-                minRows={4}
-                name="assessment"
-                onChange={handleChange}
-                value={refereeForm.assessment || ""}
-              />
-              <Typography variant="h6">E. Recommendation</Typography>
+              <FormControl variant="standard" sx={{ m: 1, minWidth: 130 }}>
+                <InputLabel>Grade</InputLabel>
+                <Select
+                  name="oral_communication"
+                  onChange={handleChange}
+                  value={refereeForm.oral_communication || ""}
+                  label="Grade"
+                >
+                  {grade.map((item) => (
+                    <MenuItem value={item.value} key={item.value}>
+                      <Typography variant="body1">{item.label}</Typography>
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Stack>
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+              spacing={24}
+              sx={{
+                m: 1,
+              }}
+            >
               <Typography variant="body1">
-                Please select one of the following by clicking on the relevant
-                statement
+                3. Written communication Skills
               </Typography>
-              <RadioGroup
-                name="recommendation"
-                value={refereeForm.recommendation || ""}
-                onChange={handleChange}
-              >
-                <FormControlLabel
-                  value="Strongly Recommend"
-                  control={<Radio required />}
-                  label={
-                    <Typography variant="body1">
-                      I strongly recommend this applicant for the above program
-                      of study
-                    </Typography>
-                  }
-                />
-                <FormControlLabel
-                  value="Recommend"
-                  control={<Radio required />}
-                  label={
-                    <Typography variant="body1">
-                      I recommend the applicant for the above program of study
-                    </Typography>
-                  }
-                />
-                <FormControlLabel
-                  value="Not Recommend"
-                  control={<Radio required />}
-                  label={
-                    <Typography variant="body1">
-                      I do not recommend this applicant for the above program of
-                      study
-                    </Typography>
-                  }
-                />
-              </RadioGroup>
-              <Button type="submit">Submit</Button>
-            </form>
-          </Container>
-        </>
-      ) : (
-        <>afsasf</>
-      )}
+              <FormControl variant="standard" sx={{ m: 1, minWidth: 130 }}>
+                <InputLabel>Grade</InputLabel>
+                <Select
+                  name="written_communication"
+                  onChange={handleChange}
+                  value={refereeForm.written_communication || ""}
+                  label="Grade"
+                >
+                  {grade.map((item) => (
+                    <MenuItem value={item.value} key={item.value}>
+                      <Typography variant="body1">{item.label}</Typography>
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Stack>
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+              spacing={24}
+              sx={{
+                m: 1,
+              }}
+            >
+              <Typography variant="body1">
+                4. Ability to work independently
+              </Typography>
+              <FormControl variant="standard" sx={{ m: 1, minWidth: 130 }}>
+                <InputLabel>Grade</InputLabel>
+                <Select
+                  name="independent_work"
+                  onChange={handleChange}
+                  value={refereeForm.independent_work || ""}
+                  label="Grade"
+                >
+                  {grade.map((item) => (
+                    <MenuItem value={item.value} key={item.value}>
+                      <Typography variant="body1">{item.label}</Typography>
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Stack>
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+              spacing={24}
+              sx={{
+                m: 1,
+              }}
+            >
+              <Typography variant="body1">
+                5. Ability to organize workload
+              </Typography>
+              <FormControl variant="standard" sx={{ m: 1, minWidth: 130 }}>
+                <InputLabel>Grade</InputLabel>
+                <Select
+                  name="organize_work"
+                  onChange={handleChange}
+                  value={refereeForm.organize_work || ""}
+                  label="Grade"
+                >
+                  {grade.map((item) => (
+                    <MenuItem value={item.value} key={item.value}>
+                      <Typography variant="body1">{item.label}</Typography>
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Stack>
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+              spacing={24}
+              sx={{
+                m: 1,
+              }}
+            >
+              <Typography variant="body1">6. Motivation</Typography>
+              <FormControl variant="standard" sx={{ m: 1, minWidth: 130 }}>
+                <InputLabel>Grade</InputLabel>
+                <Select
+                  name="motivation"
+                  onChange={handleChange}
+                  value={refereeForm.motivation || ""}
+                  label="Grade"
+                >
+                  {grade.map((item) => (
+                    <MenuItem value={item.value} key={item.value}>
+                      <Typography variant="body1">{item.label}</Typography>
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Stack>
+          </List>
+          <Typography variant="h6">D. Overall Assessment</Typography>
+          <Typography variant="body1">
+            Please use this box to provide an overall assessment of the
+            applicant. This includes the constuctive review of performance based
+            on your interaction with the applicant. (max. 300 words)
+          </Typography>
+          <TextField
+            multiline
+            fullWidth
+            minRows={4}
+            name="assessment"
+            onChange={handleChange}
+            value={refereeForm.assessment || ""}
+          />
+          <Typography variant="h6">E. Recommendation</Typography>
+          <Typography variant="body1">
+            Please select one of the following by clicking on the relevant
+            statement
+          </Typography>
+          <RadioGroup
+            name="recommendation"
+            value={refereeForm.recommendation || ""}
+            onChange={handleChange}
+          >
+            <FormControlLabel
+              value="Strongly Recommend"
+              control={<Radio required />}
+              label={
+                <Typography variant="body1">
+                  I strongly recommend this applicant for the above program of
+                  study
+                </Typography>
+              }
+            />
+            <FormControlLabel
+              value="Recommend"
+              control={<Radio required />}
+              label={
+                <Typography variant="body1">
+                  I recommend the applicant for the above program of study
+                </Typography>
+              }
+            />
+            <FormControlLabel
+              value="Not Recommend"
+              control={<Radio required />}
+              label={
+                <Typography variant="body1">
+                  I do not recommend this applicant for the above program of
+                  study
+                </Typography>
+              }
+            />
+          </RadioGroup>
+          <Button type="submit">Submit</Button>
+        </form>
+      </Container>
     </>
   );
 };
