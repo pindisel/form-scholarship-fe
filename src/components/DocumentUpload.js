@@ -49,7 +49,7 @@ const DocumentUpload = ({
           alignItems="center"
           justifyContent="space-between"
         >
-          <Typography variant="body1">2. Education Certificates:</Typography>
+          <Typography variant="body1">2. Certificate of Graduation:</Typography>
           <Input
             type="file"
             name="files"
@@ -183,7 +183,7 @@ const DocumentUpload = ({
           alignItems="center"
           justifyContent="space-between"
         >
-          <Typography variant="body1">9. Receipt of Admission Fee:</Typography>
+          <Typography variant="body1">9. Proof of Payment:</Typography>
           <Input
             type="file"
             name="files"

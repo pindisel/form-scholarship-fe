@@ -5,7 +5,14 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import { StudentRegist, Login, Signup, GetDetails, RefereeForm } from "./pages";
+import {
+  StudentRegist,
+  Login,
+  Signup,
+  GetDetails,
+  RefereeForm,
+  VerifyUser,
+} from "./pages";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -38,10 +45,6 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Navigate to="/details" />} />
                   <Route path="/details" element={<GetDetails />} />
-                  <Route
-                    path="/referee/:id_user/:id_ref"
-                    element={<RefereeForm />}
-                  />
                 </Routes>
               ) : (
                 <Routes>
@@ -65,6 +68,7 @@ function App() {
               <Route exact path="/signin" element={<Login />} />
               <Route exact path="/signup" element={<Signup />} />
               <Route path="/referee" element={<RefereeForm />} />
+              <Route path="/verify/:token" element={<VerifyUser />} />
             </Routes>
           )}
         </Router>

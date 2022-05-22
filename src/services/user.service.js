@@ -24,9 +24,20 @@ async function signinUser(data) {
   return response;
 }
 
+async function verifyUser(token) {
+  const body = {};
+  const response = await gatewayHelper.http(
+    "PUT",
+    `user/verify/${token}`,
+    body
+  );
+  return response;
+}
+
 export const UserService = {
   getUser,
   getUserById,
   createUser,
   signinUser,
+  verifyUser,
 };

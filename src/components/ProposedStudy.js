@@ -12,20 +12,20 @@ import {
 
 const courses = [
   {
-    value: "MA in Education at the Faculty of Education",
-    label: "MA in Education at the Faculty of Education",
+    value: "Education at the Faculty of Education",
+    label: "Education at the Faculty of Education",
   },
   {
-    value: "MA in Economics at the Faculty of Economics and Business",
-    label: "MA in Economics at the Faculty of Economics and Business",
+    value: "Economics at the Faculty of Economics and Business",
+    label: "Economics at the Faculty of Economics and Business",
   },
   {
-    value: "MA in Political Science at the Faculty of Social Sciences",
-    label: "MA in Political Science at the Faculty of Social Sciences",
+    value: "Political Science at the Faculty of Social Sciences",
+    label: "Political Science at the Faculty of Social Sciences",
   },
   {
-    value: "MA in Islamic Studies at the Faculty of Islamic Studies",
-    label: "MA in Islamic Studies at the Faculty of Islamic Studies",
+    value: "Islamic Studies at the Faculty of Islamic Studies",
+    label: "Islamic Studies at the Faculty of Islamic Studies",
   },
 ];
 
