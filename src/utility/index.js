@@ -7,7 +7,7 @@ async function http(method, endpoint, body = null, data) {
   // const headers = { "Content-Type": "application/json" };
 
   const headers = authHeader();
-  console.log(headers);
+  // console.log(headers);
 
   let response = null;
 

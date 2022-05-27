@@ -77,15 +77,10 @@ const RefereeForm = () => {
         ).data.data
       );
     };
-    if (personal === null || referee === null || study === null) {
-      return navigate("/");
-    }
+    // console.log(response);
 
-    if ((id_ref !== "1" || id_ref !== "2") && response !== null) {
-      return navigate("/");
-    }
     fetchData();
-  }, [id_user, id_ref, navigate, personal, response, referee, study]);
+  }, [id_ref, id_user]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -100,6 +95,14 @@ const RefereeForm = () => {
       alert("Error submitting data");
     }
   };
+
+  if (personal === null || referee === null || study === null) {
+    return navigate("/");
+  }
+
+  if (id_ref !== "1" && id_ref !== "2" && response !== null) {
+    return navigate("/");
+  }
 
   return (
     <>
