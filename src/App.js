@@ -12,6 +12,7 @@ import {
   GetDetails,
   RefereeForm,
   VerifyUser,
+  SingleDetail,
 } from "./pages";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -45,6 +46,11 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Navigate to="/details" />} />
                   <Route path="/details" element={<GetDetails />} />
+                  <Route
+                    exact
+                    path="/single-detail/:id"
+                    element={<SingleDetail />}
+                  />
                 </Routes>
               ) : (
                 <Routes>

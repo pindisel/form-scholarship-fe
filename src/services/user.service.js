@@ -34,10 +34,21 @@ async function verifyUser(token) {
   return response;
 }
 
+async function resendEmail(token) {
+  const body = {};
+  const response = await gatewayHelper.http(
+    "PUT",
+    `user/resend/${token}`,
+    body
+  );
+  return response;
+}
+
 export const UserService = {
   getUser,
   getUserById,
   createUser,
   signinUser,
   verifyUser,
+  resendEmail,
 };

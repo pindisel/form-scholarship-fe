@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   PersonalDetails,
   ContactDetails,
@@ -29,6 +29,20 @@ const StudentRegist = () => {
   const token = sessionStorage.getItem("token");
   const user = JSON.parse(sessionStorage.getItem("user"));
   const userId = user.id_user;
+  const [response, setResponse] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await PersonalService.getPersonalById(userId);
+      setResponse(data.data.data);
+    };
+
+    fetchData();
+  }, [userId]);
+
+  if (response) {
+    navigate("/details");
+  }
 
   const onSubmit = async (e) => {
     e.preventDefault();
