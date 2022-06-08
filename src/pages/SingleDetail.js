@@ -1492,6 +1492,18 @@ const SingleDetail = () => {
                     </Typography>
                   </Link>
                 </ListItem>
+                <ListItem sx={{ display: "list-item" }}>
+                  <Link
+                    to="document"
+                    style={{
+                      cursor: "pointer",
+                    }}
+                  >
+                    <Typography variant="subtitle1" fontSize="1rem">
+                      Documents
+                    </Typography>
+                  </Link>
+                </ListItem>
               </List>
             </Box>
           </Stack>
