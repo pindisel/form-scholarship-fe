@@ -106,7 +106,7 @@ const DocumentUpload = ({
           justifyContent="space-between"
         >
           <Typography variant="body1">
-            5.IELTS/TOEFL/Pearson Academic Results:
+            5. IELTS/TOEFL/Pearson Academic Results:
           </Typography>
           <Input
             type="file"
@@ -145,7 +145,7 @@ const DocumentUpload = ({
           alignItems="center"
           justifyContent="space-between"
         >
-          <Typography variant="body1">7.Curriculum Vitae:</Typography>
+          <Typography variant="body1">7. Curriculum Vitae:</Typography>
           <Input
             type="file"
             name="files"

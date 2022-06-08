@@ -44,13 +44,9 @@ function App() {
             <>
               {user.role === "admin" ? (
                 <Routes>
-                  <Route path="/" element={<Navigate to="/details" />} />
-                  <Route path="/details" element={<GetDetails />} />
-                  <Route
-                    exact
-                    path="/single-detail/:id"
-                    element={<SingleDetail />}
-                  />
+                  <Route exact path="/" element={<Navigate to="/details" />} />
+                  <Route exact path="/details" element={<GetDetails />} />
+                  <Route exact path="/details/:id" element={<SingleDetail />} />
                 </Routes>
               ) : (
                 <Routes>
